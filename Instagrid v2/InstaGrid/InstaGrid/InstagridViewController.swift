@@ -2,12 +2,12 @@
 //  ViewController.swift
 //  InstaGrid
 //
-//  Created by Thomas Carlier on 17/09/2023.
+//  Created by Thomas Carlier on 19/09/2023.
 //
 
 import UIKit
 
-class ViewController: UIViewController {
+class InstagridViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
