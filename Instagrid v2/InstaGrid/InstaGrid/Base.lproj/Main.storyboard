@@ -25,75 +25,95 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instagrid" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aDs-z3-Cd5">
-                                <rect key="frame" x="125.33333333333333" y="64.333333333333329" width="142.33333333333337" height="46.666666666666671"/>
-                                <fontDescription key="fontDescription" name="ThirstySoftRegular" family="Thirsty Soft" pointSize="36"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <view contentMode="scaleToFill" id="M8f-WP-uON" customClass="GridView" customModule="InstaGrid" customModuleProvider="target">
-                                <rect key="frame" x="46" y="276" width="300" height="300"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AOc-y7-o3h" customClass="GridView" customModule="InstaGrid" customModuleProvider="target">
+                                <rect key="frame" x="46.666666666666657" y="276" width="300" height="300"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="Np5-iW-Hrf"/>
+                                    <constraint firstAttribute="width" constant="300" id="iUN-2h-q9V"/>
+                                </constraints>
                             </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="Bin-Ey-BH6">
-                                <rect key="frame" x="46.666666666666657" y="703" width="300" height="80"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="NOb-8M-Ioc">
+                                <rect key="frame" x="46.666666666666629" y="636" width="300" height="80"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Layout 1" translatesAutoresizingMaskIntoConstraints="NO" id="iLT-w7-rcn">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Layout 1" translatesAutoresizingMaskIntoConstraints="NO" id="H0d-Qg-J7y">
                                         <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="80" id="0tb-Zl-dmM"/>
-                                            <constraint firstAttribute="height" constant="80" id="OpL-Ru-EpK"/>
+                                            <constraint firstAttribute="height" constant="80" id="4Rh-2B-PuP"/>
+                                            <constraint firstAttribute="width" constant="80" id="iaf-JQ-ed0"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Layout 2" translatesAutoresizingMaskIntoConstraints="NO" id="FVb-ks-7Ae">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Layout 2" translatesAutoresizingMaskIntoConstraints="NO" id="Yib-zh-a7C">
                                         <rect key="frame" x="110" y="0.0" width="80" height="80"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="80" id="TuZ-Hw-dsq"/>
-                                            <constraint firstAttribute="height" constant="80" id="vgw-FI-wge"/>
+                                            <constraint firstAttribute="height" constant="80" id="2dr-qb-Iyl"/>
+                                            <constraint firstAttribute="width" constant="80" id="lHI-2s-pPm"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Layout 3" translatesAutoresizingMaskIntoConstraints="NO" id="yQq-fd-HiU">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Layout 3" translatesAutoresizingMaskIntoConstraints="NO" id="X7i-JK-ukE">
                                         <rect key="frame" x="220" y="0.0" width="80" height="80"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="80" id="sgU-FE-cW4"/>
+                                            <constraint firstAttribute="height" constant="80" id="2Ls-nL-ZpN"/>
+                                            <constraint firstAttribute="width" constant="80" id="fui-En-jZU"/>
                                         </constraints>
                                     </imageView>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstItem="FVb-ks-7Ae" firstAttribute="leading" secondItem="iLT-w7-rcn" secondAttribute="trailing" constant="30" id="NGU-a1-yWu"/>
-                                    <constraint firstItem="yQq-fd-HiU" firstAttribute="leading" secondItem="FVb-ks-7Ae" secondAttribute="trailing" constant="30" id="Wfc-Z5-OyR"/>
-                                </constraints>
+                                <variation key="heightClass=compact-widthClass=regular" axis="vertical"/>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="xRj-md-QbG">
-                                <rect key="frame" x="85.666666666666671" y="186" width="221.66666666666663" height="70"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="bhS-pV-via">
+                                <rect key="frame" x="112.33333333333333" y="197.66666666666666" width="168.66666666666669" height="57"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="Arrow Up" translatesAutoresizingMaskIntoConstraints="NO" id="hZX-wa-pX0">
-                                        <rect key="frame" x="100.99999999999999" y="0.0" width="20" height="20"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Arrow Left" translatesAutoresizingMaskIntoConstraints="NO" id="1ks-We-Uyw">
+                                        <rect key="frame" x="74.333333333333329" y="0.0" width="20" height="20"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="20" id="YwE-LH-5Wb"/>
-                                            <constraint firstAttribute="height" constant="20" id="uuy-Lg-qwA"/>
+                                            <constraint firstAttribute="width" constant="20" id="B6d-9R-rMt"/>
+                                            <constraint firstAttribute="height" constant="20" id="CMf-Xp-oPp"/>
                                         </constraints>
+                                        <variation key="heightClass=regular-widthClass=compact" image="Arrow Up"/>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe up to share" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TFf-Fl-aPo">
-                                        <rect key="frame" x="0.0" y="30" width="221.66666666666666" height="40"/>
-                                        <fontDescription key="fontDescription" name="Delm-Medium" family="Delm" pointSize="36"/>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Switch up to share" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JJh-gQ-qNQ">
+                                        <rect key="frame" x="0.0" y="28" width="168.66666666666666" height="29"/>
+                                        <fontDescription key="fontDescription" name="Delm-Medium" family="Delm" pointSize="26"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
+                                        <variation key="heightClass=regular-widthClass=compact" hidden="NO"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Switch left to share" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t8y-rA-hiT">
+                                        <rect key="frame" x="-5.6666666666666572" y="57" width="179.66666666666666" height="0.0"/>
+                                        <fontDescription key="fontDescription" name="Delm-Medium" family="Delm" pointSize="26"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                        <variation key="heightClass=regular-widthClass=compact" hidden="YES"/>
                                     </label>
                                 </subviews>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instagrid" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8f2-m9-stG">
+                                <rect key="frame" x="0.0" y="64" width="393" height="39"/>
+                                <fontDescription key="fontDescription" name="ThirstySoftRegular" family="Thirsty Soft" pointSize="30"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" name="InstagridBackround"/>
                         <constraints>
-                            <constraint firstItem="Bin-Ey-BH6" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="CFJ-MU-qHL"/>
-                            <constraint firstItem="aDs-z3-Cd5" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="CVO-8A-kU0"/>
-                            <constraint firstItem="M8f-WP-uON" firstAttribute="top" secondItem="xRj-md-QbG" secondAttribute="bottom" constant="20" id="I3o-Zq-V8l"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Bin-Ey-BH6" secondAttribute="bottom" constant="35" id="QdS-mu-MCf"/>
-                            <constraint firstItem="Bin-Ey-BH6" firstAttribute="top" secondItem="M8f-WP-uON" secondAttribute="bottom" constant="125" id="Y7o-ie-hIX"/>
-                            <constraint firstItem="xRj-md-QbG" firstAttribute="top" secondItem="aDs-z3-Cd5" secondAttribute="bottom" constant="75" id="via-pu-5og"/>
-                            <constraint firstItem="xRj-md-QbG" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="zgI-Jh-m1X"/>
+                            <constraint firstItem="AOc-y7-o3h" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="AvZ-1b-Ie1"/>
+                            <constraint firstItem="8f2-m9-stG" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="5" id="Kd7-bq-5hv"/>
+                            <constraint firstItem="NOb-8M-Ioc" firstAttribute="centerY" secondItem="AOc-y7-o3h" secondAttribute="centerY" id="PtI-8c-OhZ">
+                                <variation key="heightClass=regular-widthClass=compact" constant="250"/>
+                            </constraint>
+                            <constraint firstItem="8f2-m9-stG" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Yho-Ob-Jh3"/>
+                            <constraint firstItem="bhS-pV-via" firstAttribute="centerX" secondItem="AOc-y7-o3h" secondAttribute="centerX" constant="-250" id="k8I-96-FXK">
+                                <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
+                            </constraint>
+                            <constraint firstItem="AOc-y7-o3h" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="kMT-7E-ejA"/>
+                            <constraint firstItem="NOb-8M-Ioc" firstAttribute="centerX" secondItem="AOc-y7-o3h" secondAttribute="centerX" constant="250" id="m2Y-8Z-1vq">
+                                <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
+                            </constraint>
+                            <constraint firstItem="bhS-pV-via" firstAttribute="centerY" secondItem="AOc-y7-o3h" secondAttribute="centerY" id="sfz-q9-7RE">
+                                <variation key="heightClass=regular-widthClass=compact" constant="-200"/>
+                            </constraint>
+                            <constraint firstItem="8f2-m9-stG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="y09-wx-xYD"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -103,12 +123,13 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Arrow Left" width="3.3333332538604736" height="4.6666665077209473"/>
         <image name="Arrow Up" width="4.6666665077209473" height="3.3333332538604736"/>
         <image name="Layout 1" width="26.666666030883789" height="26.666666030883789"/>
         <image name="Layout 2" width="26.666666030883789" height="26.666666030883789"/>
         <image name="Layout 3" width="26.666666030883789" height="26.666666030883789"/>
         <namedColor name="InstagridBackround">
-            <color red="0.74117654560000001" green="0.8392156959" blue="0.88627451660000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.74099999666213989" green="0.83899998664855957" blue="0.88599997758865356" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
