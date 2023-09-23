@@ -36,7 +36,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="NOb-8M-Ioc">
                                 <rect key="frame" x="46.666666666666657" y="636" width="300" height="80"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Layout 1" translatesAutoresizingMaskIntoConstraints="NO" id="H0d-Qg-J7y">
+                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Selected" translatesAutoresizingMaskIntoConstraints="NO" id="H0d-Qg-J7y">
                                         <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                                         <gestureRecognizers/>
                                         <constraints>
@@ -158,9 +158,9 @@
     <resources>
         <image name="Arrow Left" width="3.3333332538604736" height="4.6666665077209473"/>
         <image name="Arrow Up" width="4.6666665077209473" height="3.3333332538604736"/>
-        <image name="Layout 1" width="26.666666030883789" height="26.666666030883789"/>
         <image name="Layout 2" width="26.666666030883789" height="26.666666030883789"/>
         <image name="Layout 3" width="26.666666030883789" height="26.666666030883789"/>
+        <image name="Selected" width="26.666666030883789" height="26.666666030883789"/>
         <namedColor name="InstagridBackround">
             <color red="0.74099999666213989" green="0.83899998664855957" blue="0.88599997758865356" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
