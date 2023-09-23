@@ -47,35 +47,25 @@ class GridView: UIView {
     override func draw(_ rect: CGRect) {
         super.draw(rect)
         
+        let margin: CGFloat = 10.0
+        let innerRect = rect.inset(by: UIEdgeInsets(top: margin, left: margin, bottom: margin, right: margin))
+        
+        let halfHeight = (innerRect.height - margin) / 2
+        let fullWidth = innerRect.width
+        let smallSquareWidth = (fullWidth - margin) / 2
+        
         switch layoutType {
         case .layout1:
             
             self.subviews.forEach { $0.removeFromSuperview() }
-            
-            let margin: CGFloat = 10.0
-            let innerRect = rect.inset(by: UIEdgeInsets(top: margin, left: margin, bottom: margin, right: margin))
-            
-            let halfHeight = (innerRect.height - margin) / 2
-            let fullWidth = innerRect.width
-            let smallSquareWidth = (fullWidth - margin) / 2
-            
-            // Ajoutez des carrés et des rectangles en utilisant les fonctions génériques
+  
             addRectangle(atRect: CGRect(x: innerRect.minX, y: innerRect.minY, width: fullWidth, height: halfHeight))
             addSquare(atRect: CGRect(x: innerRect.minX, y: innerRect.minY + halfHeight + margin, width: smallSquareWidth, height: halfHeight))
             addSquare(atRect: CGRect(x: innerRect.minX + smallSquareWidth + margin, y: innerRect.minY + halfHeight + margin, width: smallSquareWidth, height: halfHeight))
             
-            
         case .layout2:
             self.subviews.forEach { $0.removeFromSuperview() }
-            
-            let margin: CGFloat = 10.0
-            let innerRect = rect.inset(by: UIEdgeInsets(top: margin, left: margin, bottom: margin, right: margin))
-            
-            let halfHeight = (innerRect.height - margin) / 2
-            let fullWidth = innerRect.width
-            let smallSquareWidth = (fullWidth - margin) / 2
-
-            // Ajoutez des carrés et des rectangles en utilisant les fonctions génériques
+ 
             addSquare(atRect: CGRect(x: innerRect.minX, y: innerRect.minY, width: smallSquareWidth, height: halfHeight))
             addSquare(atRect: CGRect(x: innerRect.minX + smallSquareWidth + margin, y: innerRect.minY, width: smallSquareWidth, height: halfHeight))
             addRectangle(atRect: CGRect(x: innerRect.minX, y: innerRect.minY + halfHeight + margin, width: fullWidth, height: halfHeight))
@@ -83,14 +73,6 @@ class GridView: UIView {
         case .layout3:
             self.subviews.forEach { $0.removeFromSuperview() }
             
-            let margin: CGFloat = 10.0
-            let innerRect = rect.inset(by: UIEdgeInsets(top: margin, left: margin, bottom: margin, right: margin))
-            
-            let halfHeight = (innerRect.height - margin) / 2
-            let fullWidth = innerRect.width
-            let smallSquareWidth = (fullWidth - margin) / 2
-
-            // Ajoutez des carrés et des rectangles en utilisant les fonctions génériques
             addSquare(atRect: CGRect(x: innerRect.minX, y: innerRect.minY, width: smallSquareWidth, height: halfHeight))
             addSquare(atRect: CGRect(x: innerRect.minX + smallSquareWidth + margin, y: innerRect.minY, width: smallSquareWidth, height: halfHeight))
             addSquare(atRect: CGRect(x: innerRect.minX, y: innerRect.minY + halfHeight + margin, width: smallSquareWidth, height: halfHeight))
