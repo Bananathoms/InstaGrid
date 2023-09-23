@@ -31,21 +31,21 @@ class GridView: UIView {
     }
     
     // Fonction générique pour ajouter un carré à une position donnée
-    private func addSquare(atRect rect: CGRect, image: UIImage? = UIImage(named: "Plus")) {
-        let squareImageView = UIImageView(frame: rect)
-        squareImageView.backgroundColor = UIColor.white
-        squareImageView.image = image
-        squareImageView.contentMode = .center
-        self.addSubview(squareImageView)
+    private func addSquare(atRect rect: CGRect, image: UIImage? = UIImage(named: "Plus"), action: Selector? = nil, target: Any? = nil) {
+        let squareButton = ImageButton(frame: rect, image: image)
+        if let action = action {
+            squareButton.addTarget(target, action: action, for: .touchUpInside)
+        }
+        self.addSubview(squareButton)
     }
     
     // Fonction générique pour ajouter un rectangle à une position donnée
-    private func addRectangle(atRect rect: CGRect, image: UIImage? = UIImage(named: "Plus")) {
-        let rectangleImageView = UIImageView(frame: rect)
-        rectangleImageView.backgroundColor = UIColor.white
-        rectangleImageView.image = image
-        rectangleImageView.contentMode = .center
-        self.addSubview(rectangleImageView)
+    private func addRectangle(atRect rect: CGRect, image: UIImage? = UIImage(named: "Plus"), action: Selector? = nil, target: Any? = nil) {
+        let rectangleButton = ImageButton(frame: rect, image: image)
+        if let action = action {
+            rectangleButton.addTarget(target, action: action, for: .touchUpInside)
+        }
+        self.addSubview(rectangleButton)
     }
     
     override func draw(_ rect: CGRect) {
