@@ -18,29 +18,33 @@ class GridView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setup()
+        self.marginColor()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        setup()
+        self.marginColor()
     }
     
-    private func setup() {
+    private func marginColor() {
         backgroundColor = UIColor.blue
     }
     
     // Fonction générique pour ajouter un carré à une position donnée
-    private func addSquare(atRect rect: CGRect) {
+    private func addSquare(atRect rect: CGRect, image: UIImage? = UIImage(named: "Plus")) {
         let squareImageView = UIImageView(frame: rect)
         squareImageView.backgroundColor = UIColor.white
+        squareImageView.image = image
+        squareImageView.contentMode = .center
         self.addSubview(squareImageView)
     }
     
     // Fonction générique pour ajouter un rectangle à une position donnée
-    private func addRectangle(atRect rect: CGRect) {
+    private func addRectangle(atRect rect: CGRect, image: UIImage? = UIImage(named: "Plus")) {
         let rectangleImageView = UIImageView(frame: rect)
         rectangleImageView.backgroundColor = UIColor.white
+        rectangleImageView.image = image
+        rectangleImageView.contentMode = .center
         self.addSubview(rectangleImageView)
     }
     
@@ -54,29 +58,29 @@ class GridView: UIView {
         let fullWidth = innerRect.width
         let smallSquareWidth = (fullWidth - margin) / 2
         
-        switch layoutType {
+        switch self.layoutType {
         case .layout1:
             
             self.subviews.forEach { $0.removeFromSuperview() }
   
-            addRectangle(atRect: CGRect(x: innerRect.minX, y: innerRect.minY, width: fullWidth, height: halfHeight))
-            addSquare(atRect: CGRect(x: innerRect.minX, y: innerRect.minY + halfHeight + margin, width: smallSquareWidth, height: halfHeight))
-            addSquare(atRect: CGRect(x: innerRect.minX + smallSquareWidth + margin, y: innerRect.minY + halfHeight + margin, width: smallSquareWidth, height: halfHeight))
+            self.addRectangle(atRect: CGRect(x: innerRect.minX, y: innerRect.minY, width: fullWidth, height: halfHeight))
+            self.addSquare(atRect: CGRect(x: innerRect.minX, y: innerRect.minY + halfHeight + margin, width: smallSquareWidth, height: halfHeight))
+            self.addSquare(atRect: CGRect(x: innerRect.minX + smallSquareWidth + margin, y: innerRect.minY + halfHeight + margin, width: smallSquareWidth, height: halfHeight))
             
         case .layout2:
             self.subviews.forEach { $0.removeFromSuperview() }
  
-            addSquare(atRect: CGRect(x: innerRect.minX, y: innerRect.minY, width: smallSquareWidth, height: halfHeight))
-            addSquare(atRect: CGRect(x: innerRect.minX + smallSquareWidth + margin, y: innerRect.minY, width: smallSquareWidth, height: halfHeight))
-            addRectangle(atRect: CGRect(x: innerRect.minX, y: innerRect.minY + halfHeight + margin, width: fullWidth, height: halfHeight))
+            self.addSquare(atRect: CGRect(x: innerRect.minX, y: innerRect.minY, width: smallSquareWidth, height: halfHeight))
+            self.addSquare(atRect: CGRect(x: innerRect.minX + smallSquareWidth + margin, y: innerRect.minY, width: smallSquareWidth, height: halfHeight))
+            self.addRectangle(atRect: CGRect(x: innerRect.minX, y: innerRect.minY + halfHeight + margin, width: fullWidth, height: halfHeight))
 
         case .layout3:
             self.subviews.forEach { $0.removeFromSuperview() }
             
-            addSquare(atRect: CGRect(x: innerRect.minX, y: innerRect.minY, width: smallSquareWidth, height: halfHeight))
-            addSquare(atRect: CGRect(x: innerRect.minX + smallSquareWidth + margin, y: innerRect.minY, width: smallSquareWidth, height: halfHeight))
-            addSquare(atRect: CGRect(x: innerRect.minX, y: innerRect.minY + halfHeight + margin, width: smallSquareWidth, height: halfHeight))
-            addSquare(atRect: CGRect(x: innerRect.minX + smallSquareWidth + margin, y: innerRect.minY + halfHeight + margin, width: smallSquareWidth, height: halfHeight))
+            self.addSquare(atRect: CGRect(x: innerRect.minX, y: innerRect.minY, width: smallSquareWidth, height: halfHeight))
+            self.addSquare(atRect: CGRect(x: innerRect.minX + smallSquareWidth + margin, y: innerRect.minY, width: smallSquareWidth, height: halfHeight))
+            self.addSquare(atRect: CGRect(x: innerRect.minX, y: innerRect.minY + halfHeight + margin, width: smallSquareWidth, height: halfHeight))
+            self.addSquare(atRect: CGRect(x: innerRect.minX + smallSquareWidth + margin, y: innerRect.minY + halfHeight + margin, width: smallSquareWidth, height: halfHeight))
 
 
         }
