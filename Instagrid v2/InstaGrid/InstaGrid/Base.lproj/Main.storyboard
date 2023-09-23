@@ -17,10 +17,10 @@
         </array>
     </customFonts>
     <scenes>
-        <!--View Controller-->
+        <!--Instagrid View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="InstaGrid" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="InstagridViewController" customModule="InstaGrid" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -34,28 +34,40 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="NOb-8M-Ioc">
-                                <rect key="frame" x="46.666666666666629" y="636" width="300" height="80"/>
+                                <rect key="frame" x="46.666666666666657" y="636" width="300" height="80"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Layout 1" translatesAutoresizingMaskIntoConstraints="NO" id="H0d-Qg-J7y">
+                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Layout 1" translatesAutoresizingMaskIntoConstraints="NO" id="H0d-Qg-J7y">
                                         <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                        <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="80" id="4Rh-2B-PuP"/>
                                             <constraint firstAttribute="width" constant="80" id="iaf-JQ-ed0"/>
                                         </constraints>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="VOC-8B-fae" appends="YES" id="lJQ-gs-Xv0"/>
+                                        </connections>
                                     </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Layout 2" translatesAutoresizingMaskIntoConstraints="NO" id="Yib-zh-a7C">
+                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Layout 2" translatesAutoresizingMaskIntoConstraints="NO" id="Yib-zh-a7C">
                                         <rect key="frame" x="110" y="0.0" width="80" height="80"/>
+                                        <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="80" id="2dr-qb-Iyl"/>
                                             <constraint firstAttribute="width" constant="80" id="lHI-2s-pPm"/>
                                         </constraints>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="A8F-hB-7TX" appends="YES" id="LA0-xK-AdK"/>
+                                        </connections>
                                     </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Layout 3" translatesAutoresizingMaskIntoConstraints="NO" id="X7i-JK-ukE">
+                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Layout 3" translatesAutoresizingMaskIntoConstraints="NO" id="X7i-JK-ukE">
                                         <rect key="frame" x="220" y="0.0" width="80" height="80"/>
+                                        <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="80" id="2Ls-nL-ZpN"/>
                                             <constraint firstAttribute="width" constant="80" id="fui-En-jZU"/>
                                         </constraints>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="wsZ-WP-f08" appends="YES" id="27q-E8-zJj"/>
+                                        </connections>
                                     </imageView>
                                 </subviews>
                                 <variation key="heightClass=compact-widthClass=regular" axis="vertical"/>
@@ -116,8 +128,29 @@
                             <constraint firstItem="8f2-m9-stG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="y09-wx-xYD"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="gridView" destination="AOc-y7-o3h" id="pvX-z7-gxZ"/>
+                        <outlet property="layout1Button" destination="H0d-Qg-J7y" id="Cl8-F5-kaL"/>
+                        <outlet property="layout2Button" destination="Yib-zh-a7C" id="S2q-qH-4ce"/>
+                        <outlet property="layout3Button" destination="X7i-JK-ukE" id="dqc-My-7PS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="VOC-8B-fae" userLabel="layout1TapGestur">
+                    <connections>
+                        <action selector="layout1ImageTapped:" destination="BYZ-38-t0r" id="SXL-VO-RsI"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="A8F-hB-7TX" userLabel="layout2TapGestur">
+                    <connections>
+                        <action selector="layout2ImageTapped:" destination="BYZ-38-t0r" id="yj2-1r-xZd"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="wsZ-WP-f08" userLabel="layout3TapGestur">
+                    <connections>
+                        <action selector="layout3ImageTapped:" destination="BYZ-38-t0r" id="xi5-Dy-S8E"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="57.251908396946561" y="-2.1126760563380285"/>
         </scene>
