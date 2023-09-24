@@ -21,6 +21,7 @@
 		DE67BC092ABE740C00280306 /* ThirstySoftRegular.otf in Resources */ = {isa = PBXBuildFile; fileRef = DE67BC082ABE740C00280306 /* ThirstySoftRegular.otf */; };
 		DE67BC0B2ABE743A00280306 /* Delm-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = DE67BC0A2ABE743A00280306 /* Delm-Medium.otf */; };
 		DE67BC102ABE7F9A00280306 /* ImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE67BC0F2ABE7F9A00280306 /* ImageButton.swift */; };
+		DE67BC142ABFCF5800280306 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE67BC132ABFCF5800280306 /* Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		DE67BC082ABE740C00280306 /* ThirstySoftRegular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = ThirstySoftRegular.otf; path = ../../../../../../../../../Downloads/ThirstySoftRegular.otf; sourceTree = "<group>"; };
 		DE67BC0A2ABE743A00280306 /* Delm-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Delm-Medium.otf"; path = "../../../../InstaGrid/InstaGrid/Ressources/Delm-Medium.otf"; sourceTree = "<group>"; };
 		DE67BC0F2ABE7F9A00280306 /* ImageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageButton.swift; sourceTree = "<group>"; };
+		DE67BC132ABFCF5800280306 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +91,7 @@
 		DE19E6BA2AB91A410049EE7A = {
 			isa = PBXGroup;
 			children = (
+				DE67BC132ABFCF5800280306 /* Extension.swift */,
 				DE19E6C52AB91A410049EE7A /* InstaGrid */,
 				DE19E6DC2AB91A430049EE7A /* InstaGridTests */,
 				DE19E6E62AB91A430049EE7A /* InstaGridUITests */,
@@ -317,6 +320,7 @@
 			files = (
 				DE19E6CB2AB91A410049EE7A /* InstagridViewController.swift in Sources */,
 				DE67BC102ABE7F9A00280306 /* ImageButton.swift in Sources */,
+				DE67BC142ABFCF5800280306 /* Extension.swift in Sources */,
 				DE19E6C72AB91A410049EE7A /* AppDelegate.swift in Sources */,
 				DE19E6FF2AB926340049EE7A /* Layout.swift in Sources */,
 				DE19E6FB2AB925C50049EE7A /* GridView.swift in Sources */,

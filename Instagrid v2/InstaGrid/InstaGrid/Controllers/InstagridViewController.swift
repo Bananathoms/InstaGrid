@@ -25,24 +25,24 @@ class InstagridViewController: UIViewController {
     }
 
     @IBAction func layout1ImageTapped(_ sender: UITapGestureRecognizer) {
-        gridView.layoutType = .layout1
-        layout1Button.image = selectedLayout
-        layout2Button.image = layout2Image
-        layout3Button.image = layout3Image
+        self.gridView.layoutType = .layout1
+        self.layout1Button.image = selectedLayout
+        self.layout2Button.image = layout2Image
+        self.layout3Button.image = layout3Image
     }
 
     @IBAction func layout2ImageTapped(_ sender: UITapGestureRecognizer) {
-        gridView.layoutType = .layout2
-        layout1Button.image = layout1Image
-        layout2Button.image = selectedLayout
-        layout3Button.image = layout3Image
+        self.gridView.layoutType = .layout2
+        self.layout1Button.image = layout1Image
+        self.layout2Button.image = selectedLayout
+        self.layout3Button.image = layout3Image
     }
 
     @IBAction func layout3ImageTapped(_ sender: UITapGestureRecognizer) {
-        gridView.layoutType = .layout3
-        layout1Button.image = layout1Image
-        layout2Button.image = layout2Image
-        layout3Button.image = selectedLayout
+        self.gridView.layoutType = .layout3
+        self.layout1Button.image = layout1Image
+        self.layout2Button.image = layout2Image
+        self.layout3Button.image = selectedLayout
     }
 
 }
