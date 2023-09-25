@@ -40,15 +40,25 @@ class ImageButton: UIButton, UIImagePickerControllerDelegate & UINavigationContr
             
             self.selectedButtonImage = selectedImage
             
-            print("Selected Image: \(String(describing: selectedButtonImage))")
-            DispatchQueue.main.async {
-                self.setImage(self.selectedButtonImage, for: .normal)
-            }
-            
         } else {
             // Gérer le cas où l'accès à la bibliothèque de photos n'est pas autorisé
             print("Accès à la bibliothèque de photos non autorisé.")
         }
+    }
+    
+    // mise a jour de la selection d'image
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let image = info[.originalImage] as? UIImage {
+            self.selectedImage = image
+            self.imageSelectedHandler?(selectedImage)
+            self.selectedButtonImage = selectedImage
+            setImage(self.selectedButtonImage, for: .normal)
+        }
+        picker.dismiss(animated: true, completion: nil)
+    }
+
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
     }
     
     required init?(coder: NSCoder) {

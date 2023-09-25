@@ -31,7 +31,7 @@ class GridView: UIView {
         backgroundColor = UIColor.blue
     }
     
-    // Fonction générique pour ajouter un carré à une position donnée
+    // Fonction pour ajouter un carré à une position donnée
     private func addSquare(atRect rect: CGRect, image: UIImage? = UIImage(named: "Plus"), action: Selector? = nil, target: Any? = nil) {
         let squareButton = ImageButton(frame: rect, image: image)
         if let action = action {
@@ -46,7 +46,7 @@ class GridView: UIView {
         self.addSubview(squareButton)
     }
     
-    // Fonction générique pour ajouter un rectangle à une position donnée
+    // Fonction pour ajouter un rectangle à une position donnée
     private func addRectangle(atRect rect: CGRect, image: UIImage? = UIImage(named: "Plus"), action: Selector? = nil, target: Any? = nil) {
         let rectangleButton = ImageButton(frame: rect, image: image)
         if let action = action {
