@@ -20,3 +20,16 @@ extension UIView {
         return nil
     }
 }
+
+extension UIImage {
+    //redimentionnement de l'image
+    func scale(to size: CGSize) -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(size, false, UIScreen.main.scale)
+        defer { UIGraphicsEndImageContext() }
+        self.draw(in: CGRect(origin: .zero, size: size))
+        if let scaledImage = UIGraphicsGetImageFromCurrentImageContext() {
+            return scaledImage
+        }
+        return self
+    }
+}

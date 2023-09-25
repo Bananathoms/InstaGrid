@@ -49,9 +49,13 @@ class ImageButton: UIButton, UIImagePickerControllerDelegate & UINavigationContr
     // mise a jour de la selection d'image
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[.originalImage] as? UIImage {
-            self.selectedImage = image
-            self.imageSelectedHandler?(selectedImage)
-            self.selectedButtonImage = selectedImage
+            // Redimensionner l'image pour qu'elle s'adapte à la taille du bouton
+            let buttonSize = self.frame.size
+            let scaledImage = image.scale(to: buttonSize)
+            
+            self.selectedImage = scaledImage
+            self.imageSelectedHandler?(self.selectedImage)
+            self.selectedButtonImage = scaledImage
             setImage(self.selectedButtonImage, for: .normal)
         }
         picker.dismiss(animated: true, completion: nil)
