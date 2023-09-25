@@ -17,7 +17,6 @@ class GridView: UIView {
     }
     
     
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.marginColor()
@@ -38,6 +37,12 @@ class GridView: UIView {
         if let action = action {
             squareButton.addTarget(target, action: action, for: .touchUpInside)
         }
+        
+        squareButton.imageSelectedHandler = { selectedImage in
+            squareButton.selectedButtonImage = selectedImage
+            squareButton.setImage(selectedImage, for: .normal)
+        }
+        
         self.addSubview(squareButton)
     }
     
@@ -47,6 +52,12 @@ class GridView: UIView {
         if let action = action {
             rectangleButton.addTarget(target, action: action, for: .touchUpInside)
         }
+        
+        rectangleButton.imageSelectedHandler = { selectedImage in
+            rectangleButton.selectedButtonImage = selectedImage
+            rectangleButton.setImage(selectedImage, for: .normal)
+        }
+        
         self.addSubview(rectangleButton)
     }
     

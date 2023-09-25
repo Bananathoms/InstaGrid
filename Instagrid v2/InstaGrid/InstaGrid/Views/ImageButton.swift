@@ -10,6 +10,12 @@ import UIKit
 import Photos
 
 class ImageButton: UIButton, UIImagePickerControllerDelegate & UINavigationControllerDelegate {
+    
+    var imageSelectedHandler: ((UIImage?) -> Void)?
+    var selectedImage: UIImage?
+    var selectedButtonImage: UIImage? = UIImage(named: "Plus")
+
+    
     init(frame: CGRect, image: UIImage?) {
         super.init(frame: frame)
         setImage(image, for: .normal)
@@ -24,12 +30,23 @@ class ImageButton: UIButton, UIImagePickerControllerDelegate & UINavigationContr
         if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
             let imagePicker = UIImagePickerController()
             imagePicker.sourceType = .photoLibrary
-            imagePicker.delegate = self // Assurez-vous que votre ViewController adopte le protocole UIImagePickerControllerDelegate
-            // Vous pouvez également configurer d'autres propriétés de UIImagePickerController ici, telles que l'édition de l'image.
-            UIApplication.shared.keyWindow?.rootViewController?.present(imagePicker, animated: true, completion: nil)
+            imagePicker.delegate = self
+            if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+               let sceneDelegate = windowScene.delegate as? SceneDelegate {
+                sceneDelegate.window?.rootViewController?.present(imagePicker, animated: true, completion: nil)
+            }
+            
+            self.imageSelectedHandler?(selectedImage)
+            
+            self.selectedButtonImage = selectedImage
+            
+            print("Selected Image: \(String(describing: selectedButtonImage))")
+            DispatchQueue.main.async {
+                self.setImage(self.selectedButtonImage, for: .normal)
+            }
+            
         } else {
             // Gérer le cas où l'accès à la bibliothèque de photos n'est pas autorisé
-            // Par exemple, vous pouvez afficher un message d'erreur à l'utilisateur.
             print("Accès à la bibliothèque de photos non autorisé.")
         }
     }
