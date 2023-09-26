@@ -27,10 +27,61 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AOc-y7-o3h" customClass="GridView" customModule="InstaGrid" customModuleProvider="target">
                                 <rect key="frame" x="46.666666666666657" y="276" width="300" height="300"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rlx-Jm-QDX" customClass="ImageButton" customModule="InstaGrid" customModuleProvider="target">
+                                        <rect key="frame" x="10" y="10" width="135" height="135"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="135" id="Wln-2u-iV1"/>
+                                            <constraint firstAttribute="height" constant="135" id="eSI-7l-w45"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="Plus"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XNM-Tk-GMH" customClass="ImageButton" customModule="InstaGrid" customModuleProvider="target">
+                                        <rect key="frame" x="155" y="10" width="135" height="135"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="135" id="0Wt-UC-PyW"/>
+                                            <constraint firstAttribute="height" constant="135" id="5XE-SU-aea"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="Plus"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pTc-ds-Rss" customClass="ImageButton" customModule="InstaGrid" customModuleProvider="target">
+                                        <rect key="frame" x="10" y="155" width="135" height="135"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="135" id="1Mf-7y-8X4"/>
+                                            <constraint firstAttribute="height" constant="135" id="sVw-FW-N89"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="Plus"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KzJ-Ai-fZt" customClass="ImageButton" customModule="InstaGrid" customModuleProvider="target">
+                                        <rect key="frame" x="155" y="155" width="135" height="135"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="135" id="SFC-PY-0tO"/>
+                                            <constraint firstAttribute="width" constant="135" id="c9f-Qb-w7Z"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="Plus"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBlueColor"/>
                                 <constraints>
+                                    <constraint firstItem="pTc-ds-Rss" firstAttribute="top" secondItem="Rlx-Jm-QDX" secondAttribute="bottom" constant="10" id="GJ5-PJ-m60"/>
+                                    <constraint firstItem="Rlx-Jm-QDX" firstAttribute="leading" secondItem="AOc-y7-o3h" secondAttribute="leading" constant="10" id="L2Y-qF-Sx3"/>
                                     <constraint firstAttribute="height" constant="300" id="Np5-iW-Hrf"/>
+                                    <constraint firstItem="XNM-Tk-GMH" firstAttribute="leading" secondItem="Rlx-Jm-QDX" secondAttribute="trailing" constant="10" id="SGk-9n-1AQ"/>
+                                    <constraint firstItem="KzJ-Ai-fZt" firstAttribute="top" secondItem="XNM-Tk-GMH" secondAttribute="bottom" constant="10" id="cXv-OC-6zV"/>
                                     <constraint firstAttribute="width" constant="300" id="iUN-2h-q9V"/>
+                                    <constraint firstItem="Rlx-Jm-QDX" firstAttribute="top" secondItem="AOc-y7-o3h" secondAttribute="top" constant="10" id="lRr-qw-twY"/>
+                                    <constraint firstItem="pTc-ds-Rss" firstAttribute="leading" secondItem="AOc-y7-o3h" secondAttribute="leading" constant="10" id="mGW-Ci-doJ"/>
+                                    <constraint firstAttribute="trailing" secondItem="XNM-Tk-GMH" secondAttribute="trailing" constant="10" id="n5Q-Wu-uhN"/>
+                                    <constraint firstItem="KzJ-Ai-fZt" firstAttribute="leading" secondItem="pTc-ds-Rss" secondAttribute="trailing" constant="10" id="oIz-Bz-o9H"/>
+                                    <constraint firstItem="XNM-Tk-GMH" firstAttribute="top" secondItem="AOc-y7-o3h" secondAttribute="top" constant="10" id="rV0-lo-L03"/>
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="NOb-8M-Ioc">
@@ -133,6 +184,12 @@
                         <outlet property="layout1Button" destination="H0d-Qg-J7y" id="Cl8-F5-kaL"/>
                         <outlet property="layout2Button" destination="Yib-zh-a7C" id="S2q-qH-4ce"/>
                         <outlet property="layout3Button" destination="X7i-JK-ukE" id="dqc-My-7PS"/>
+                        <outlet property="leadDownSquare" destination="pTc-ds-Rss" id="8FA-bY-zrm"/>
+                        <outlet property="leadUpSquare" destination="Rlx-Jm-QDX" id="YZ5-cQ-iCY"/>
+                        <outlet property="leadUpWidhtConstraint" destination="Wln-2u-iV1" id="j6Q-rq-7ah"/>
+                        <outlet property="trailDownSquare" destination="KzJ-Ai-fZt" id="XPl-Yh-Uee"/>
+                        <outlet property="trailUpSquare" destination="XNM-Tk-GMH" id="irm-6r-DSe"/>
+                        <outlet property="trailUpWidthConstraint" destination="0Wt-UC-PyW" id="Xyk-0r-kYt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -160,12 +217,13 @@
         <image name="Arrow Up" width="4.6666665077209473" height="3.3333332538604736"/>
         <image name="Layout 2" width="26.666666030883789" height="26.666666030883789"/>
         <image name="Layout 3" width="26.666666030883789" height="26.666666030883789"/>
+        <image name="Plus" width="13.333333015441895" height="13.333333015441895"/>
         <image name="Selected" width="26.666666030883789" height="26.666666030883789"/>
         <namedColor name="InstagridBackround">
             <color red="0.74099999666213989" green="0.83899998664855957" blue="0.88599997758865356" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
