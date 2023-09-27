@@ -5,7 +5,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -69,7 +68,7 @@
                                         <buttonConfiguration key="configuration" style="plain" image="Plus"/>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                <color key="backgroundColor" name="GridColor"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="KzJ-Ai-fZt" secondAttribute="trailing" constant="10" id="0hO-5L-7HZ"/>
                                     <constraint firstItem="pTc-ds-Rss" firstAttribute="top" secondItem="Rlx-Jm-QDX" secondAttribute="bottom" constant="10" id="GJ5-PJ-m60"/>
@@ -226,11 +225,11 @@
         <image name="Layout 3" width="26.666666030883789" height="26.666666030883789"/>
         <image name="Plus" width="13.333333015441895" height="13.333333015441895"/>
         <image name="Selected" width="26.666666030883789" height="26.666666030883789"/>
+        <namedColor name="GridColor">
+            <color red="0.18000000715255737" green="0.38400000333786011" blue="0.60799998044967651" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
         <namedColor name="InstagridBackround">
             <color red="0.74099999666213989" green="0.83899998664855957" blue="0.88599997758865356" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
-        <systemColor name="systemBlueColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
     </resources>
 </document>

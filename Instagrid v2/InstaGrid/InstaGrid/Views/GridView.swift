@@ -16,22 +16,13 @@ class GridView: UIView {
         }
     }
     
-
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.marginColor()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        self.marginColor()
     }
-    
-    private func marginColor() {
-        backgroundColor = UIColor.blue
-    }
-    
     
     override func draw(_ rect: CGRect) {
         super.draw(rect)
