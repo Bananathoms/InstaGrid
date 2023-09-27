@@ -14,7 +14,6 @@ class InstagridViewController: UIViewController {
     let layout2Image = UIImage(named: "Layout 2")
     let layout3Image = UIImage(named: "Layout 3")
 
-    
     @IBOutlet weak var gridView: GridView!
     
     @IBOutlet weak var layout1Button: UIImageView!
@@ -46,13 +45,16 @@ class InstagridViewController: UIViewController {
         switch layoutType {
         case .layout1:
             self.configureConstraints(leadUp: 280, trailUp: 0, leadDown: 135, trailDown: 135, trailUpHidden: true, trailDownHidden: false, trailUpTrail: 0, trailDownTrail: 10)
-            self.updateButtonImages(leadUpSquare, leadDownSquare)
+            self.resizeImageForButton(leadUpSquare, width: 280, height: 135)
+            self.resizeImageForButton(leadDownSquare, width: 135, height: 135)
         case .layout2:
             self.configureConstraints(leadUp: 135, trailUp: 135, leadDown: 280, trailDown: 0, trailUpHidden: false, trailDownHidden: true, trailUpTrail: 10, trailDownTrail: 0)
-            self.updateButtonImages(leadDownSquare, leadUpSquare)
+            self.resizeImageForButton(leadUpSquare, width: 135, height: 135)
+            self.resizeImageForButton(leadDownSquare, width: 280, height: 135)
         case .layout3:
             self.configureConstraints(leadUp: 135, trailUp: 135, leadDown: 135, trailDown: 135, trailUpHidden: false, trailDownHidden: false, trailUpTrail: 10, trailDownTrail: 10)
-            self.updateButtonImages(leadUpSquare, leadDownSquare)
+            self.resizeImageForButton(leadUpSquare, width: 135, height: 135)
+            self.resizeImageForButton(leadDownSquare, width: 135, height: 135)
         }
     }
 
@@ -70,13 +72,28 @@ class InstagridViewController: UIViewController {
         self.trailDownTrailConstraint.constant = trailDownTrail
     }
 
-    private func updateButtonImages(_ selectedButton: ImageButton, _ otherButton: ImageButton) {
-        if let image = selectedButton.selectedImage {
-            let resizedImage = image.scale(to: CGSize(width: selectedButton.frame.width, height: selectedButton.frame.height))
-            selectedButton.setImage(resizedImage, for: .normal)
+    private func resizeImageForButton(_ button: ImageButton, width: CGFloat, height: CGFloat) {
+        if let image = button.selectedImage {
+            let resizedImage = resizeImage(image: image, width: width, height: height)
+            button.setImage(resizedImage, for: .normal)
         }
-        otherButton.setImage(nil, for: .normal)
     }
+
+    private func resizeImage(image: UIImage?, width: CGFloat, height: CGFloat) -> UIImage? {
+        guard let image = image else {
+            return nil
+        }
+        
+        let newSize = CGSize(width: width, height: height)
+        
+        UIGraphicsBeginImageContextWithOptions(newSize, false, UIScreen.main.scale)
+        image.draw(in: CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height))
+        let resizedImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return resizedImage
+    }
+
     
     @IBAction func layout1ImageTapped(_ sender: UITapGestureRecognizer) {
         self.setupLayout(layoutType: .layout1)
