@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Photos
 
 class InstagridViewController: UIViewController {
     
@@ -36,8 +37,52 @@ class InstagridViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLayout(layoutType: .layout1)
-
+        
+        
+         // Vérifiez si vous avez déjà demandé l'accès à la bibliothèque
+         let status = PHPhotoLibrary.authorizationStatus()
+         
+         switch status {
+         case .authorized:
+             // L'accès à la bibliothèque est déjà autorisé, vous pouvez accéder aux photos ici.
+             break
+         case .notDetermined:
+             // Vous n'avez pas encore demandé l'accès, demandez-le maintenant.
+             PHPhotoLibrary.requestAuthorization { [self] status in
+                 DispatchQueue.main.async {
+                     if status == .authorized {
+                         // L'accès a été accordé
+                     } else {
+                         // L'accès a été refusé ou restreint, montrez l'alerte.
+                         self.showSettingsAlert()
+                     }
+                 }
+             }
+         default:
+             // L'accès a été refusé ou restreint, montrez l'alerte.
+             showSettingsAlert()
+             break
+         }
     }
+    
+    func showSettingsAlert() {
+        let alertController = UIAlertController(
+            title: "Accès à la bibliothèque de photos",
+            message: "Pour utiliser cette fonctionnalité, veuillez activer l'accès à la bibliothèque de photos dans les paramètres de l'application.",
+            preferredStyle: .alert
+        )
+        
+        alertController.addAction(UIAlertAction(title: "Annuler", style: .cancel, handler: nil))
+        
+        alertController.addAction(UIAlertAction(title: "Paramètres", style: .default, handler: { action in
+            if let settingsURL = URL(string: UIApplication.openSettingsURLString) {
+                UIApplication.shared.open(settingsURL, options: [:], completionHandler: nil)
+            }
+        }))
+        
+        present(alertController, animated: true, completion: nil)
+    }
+
     
     private func setupLayout(layoutType: LayoutType) {
         gridView.layoutType = layoutType
