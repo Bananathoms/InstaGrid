@@ -41,6 +41,7 @@ class InstagridViewController: UIViewController {
     
     @IBAction func layout1ImageTapped(_ sender: UITapGestureRecognizer) {
         self.gridView.layoutType = .layout1
+        
         self.layout1Button.image = selectedLayout
         self.layout2Button.image = layout2Image
         self.layout3Button.image = layout3Image
@@ -50,6 +51,9 @@ class InstagridViewController: UIViewController {
         self.leadDownWidthConstraint.constant = 135
         self.trailDownWidthConstraint.constant = 135
         
+        self.trailUpSquare.isHidden = true
+        self.trailDownSquare.isHidden = false
+        
         self.trailUpTrailConstraint.constant = 0
         self.trailDownTrailConstraint.constant = 10
         
@@ -57,6 +61,7 @@ class InstagridViewController: UIViewController {
 
     @IBAction func layout2ImageTapped(_ sender: UITapGestureRecognizer) {
         self.gridView.layoutType = .layout2
+        
         self.layout1Button.image = layout1Image
         self.layout2Button.image = selectedLayout
         self.layout3Button.image = layout3Image
@@ -66,12 +71,16 @@ class InstagridViewController: UIViewController {
         self.leadDownWidthConstraint.constant = 280
         self.trailDownWidthConstraint.constant = 0
         
+        self.trailUpSquare.isHidden = false
+        self.trailDownSquare.isHidden = true
+        
         self.trailUpTrailConstraint.constant = 10
         self.trailDownTrailConstraint.constant = 0
     }
 
     @IBAction func layout3ImageTapped(_ sender: UITapGestureRecognizer) {
         self.gridView.layoutType = .layout3
+        
         self.layout1Button.image = layout1Image
         self.layout2Button.image = layout2Image
         self.layout3Button.image = selectedLayout
@@ -80,6 +89,9 @@ class InstagridViewController: UIViewController {
         self.trailUpWidthConstraint.constant = 135
         self.leadDownWidthConstraint.constant = 135
         self.trailDownWidthConstraint.constant = 135
+        
+        self.trailUpSquare.isHidden = false
+        self.trailDownSquare.isHidden = false
         
         self.trailUpTrailConstraint.constant = 10
         self.trailDownTrailConstraint.constant = 10
