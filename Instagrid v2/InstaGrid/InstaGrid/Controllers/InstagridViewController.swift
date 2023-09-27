@@ -36,65 +36,70 @@ class InstagridViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupLayout(layoutType: .layout1)
 
     }
     
+    private func setupLayout(layoutType: LayoutType) {
+        gridView.layoutType = layoutType
+
+        switch layoutType {
+        case .layout1:
+            self.configureConstraints(leadUp: 280, trailUp: 0, leadDown: 135, trailDown: 135, trailUpHidden: true, trailDownHidden: false, trailUpTrail: 0, trailDownTrail: 10)
+            self.updateButtonImages(leadUpSquare, leadDownSquare)
+        case .layout2:
+            self.configureConstraints(leadUp: 135, trailUp: 135, leadDown: 280, trailDown: 0, trailUpHidden: false, trailDownHidden: true, trailUpTrail: 10, trailDownTrail: 0)
+            self.updateButtonImages(leadDownSquare, leadUpSquare)
+        case .layout3:
+            self.configureConstraints(leadUp: 135, trailUp: 135, leadDown: 135, trailDown: 135, trailUpHidden: false, trailDownHidden: false, trailUpTrail: 10, trailDownTrail: 10)
+            self.updateButtonImages(leadUpSquare, leadDownSquare)
+        }
+    }
+
+    private func configureConstraints(leadUp: CGFloat, trailUp: CGFloat, leadDown: CGFloat, trailDown: CGFloat, trailUpHidden: Bool, trailDownHidden: Bool, trailUpTrail: CGFloat, trailDownTrail: CGFloat) {
+        
+        self.leadUpWidhtConstraint.constant = leadUp
+        self.trailUpWidthConstraint.constant = trailUp
+        self.leadDownWidthConstraint.constant = leadDown
+        self.trailDownWidthConstraint.constant = trailDown
+
+        self.trailUpSquare.isHidden = trailUpHidden
+        self.trailDownSquare.isHidden = trailDownHidden
+
+        self.trailUpTrailConstraint.constant = trailUpTrail
+        self.trailDownTrailConstraint.constant = trailDownTrail
+    }
+
+    private func updateButtonImages(_ selectedButton: ImageButton, _ otherButton: ImageButton) {
+        if let image = selectedButton.selectedImage {
+            let resizedImage = image.scale(to: CGSize(width: selectedButton.frame.width, height: selectedButton.frame.height))
+            selectedButton.setImage(resizedImage, for: .normal)
+        }
+        otherButton.setImage(nil, for: .normal)
+    }
+    
     @IBAction func layout1ImageTapped(_ sender: UITapGestureRecognizer) {
-        self.gridView.layoutType = .layout1
+        self.setupLayout(layoutType: .layout1)
         
         self.layout1Button.image = selectedLayout
         self.layout2Button.image = layout2Image
         self.layout3Button.image = layout3Image
-        
-        self.leadUpWidhtConstraint.constant = 280
-        self.trailUpWidthConstraint.constant = 0
-        self.leadDownWidthConstraint.constant = 135
-        self.trailDownWidthConstraint.constant = 135
-        
-        self.trailUpSquare.isHidden = true
-        self.trailDownSquare.isHidden = false
-        
-        self.trailUpTrailConstraint.constant = 0
-        self.trailDownTrailConstraint.constant = 10
-        
     }
 
     @IBAction func layout2ImageTapped(_ sender: UITapGestureRecognizer) {
-        self.gridView.layoutType = .layout2
+        self.setupLayout(layoutType: .layout2)
         
         self.layout1Button.image = layout1Image
         self.layout2Button.image = selectedLayout
         self.layout3Button.image = layout3Image
-        
-        self.leadUpWidhtConstraint.constant = 135
-        self.trailUpWidthConstraint.constant = 135
-        self.leadDownWidthConstraint.constant = 280
-        self.trailDownWidthConstraint.constant = 0
-        
-        self.trailUpSquare.isHidden = false
-        self.trailDownSquare.isHidden = true
-        
-        self.trailUpTrailConstraint.constant = 10
-        self.trailDownTrailConstraint.constant = 0
     }
 
     @IBAction func layout3ImageTapped(_ sender: UITapGestureRecognizer) {
-        self.gridView.layoutType = .layout3
+        self.setupLayout(layoutType: .layout3)
         
         self.layout1Button.image = layout1Image
         self.layout2Button.image = layout2Image
         self.layout3Button.image = selectedLayout
-        
-        self.leadUpWidhtConstraint.constant = 135
-        self.trailUpWidthConstraint.constant = 135
-        self.leadDownWidthConstraint.constant = 135
-        self.trailDownWidthConstraint.constant = 135
-        
-        self.trailUpSquare.isHidden = false
-        self.trailDownSquare.isHidden = false
-        
-        self.trailUpTrailConstraint.constant = 10
-        self.trailDownTrailConstraint.constant = 10
     }
 
 }
