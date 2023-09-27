@@ -13,14 +13,7 @@ class InstagridViewController: UIViewController {
     let layout1Image = UIImage(named: "Layout 1")
     let layout2Image = UIImage(named: "Layout 2")
     let layout3Image = UIImage(named: "Layout 3")
-    
-    @IBOutlet weak var leadUpSquare: ImageButton!
-    
-    @IBOutlet weak var trailUpSquare: ImageButton!
-    
-    @IBOutlet weak var leadDownSquare: ImageButton!
-    
-    @IBOutlet weak var trailDownSquare: ImageButton!
+
     
     @IBOutlet weak var gridView: GridView!
     
@@ -28,14 +21,23 @@ class InstagridViewController: UIViewController {
     @IBOutlet weak var layout2Button: UIImageView!
     @IBOutlet weak var layout3Button: UIImageView!
     
+    @IBOutlet weak var leadUpSquare: ImageButton!
+    @IBOutlet weak var trailUpSquare: ImageButton!
+    @IBOutlet weak var leadDownSquare: ImageButton!
+    @IBOutlet weak var trailDownSquare: ImageButton!
+    
+    @IBOutlet weak var leadUpWidhtConstraint: NSLayoutConstraint!
+    @IBOutlet weak var trailUpWidthConstraint: NSLayoutConstraint!
+    @IBOutlet weak var leadDownWidthConstraint: NSLayoutConstraint!
+    @IBOutlet weak var trailDownWidthConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var trailUpTrailConstraint: NSLayoutConstraint!
+    @IBOutlet weak var trailDownTrailConstraint: NSLayoutConstraint!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
     }
-    @IBOutlet weak var leadUpWidhtConstraint: NSLayoutConstraint!
-    @IBOutlet weak var trailUpWidthConstraint: NSLayoutConstraint!
-    
-    
     
     @IBAction func layout1ImageTapped(_ sender: UITapGestureRecognizer) {
         self.gridView.layoutType = .layout1
@@ -45,6 +47,11 @@ class InstagridViewController: UIViewController {
         
         self.leadUpWidhtConstraint.constant = 280
         self.trailUpWidthConstraint.constant = 0
+        self.leadDownWidthConstraint.constant = 135
+        self.trailDownWidthConstraint.constant = 135
+        
+        self.trailUpTrailConstraint.constant = 0
+        self.trailDownTrailConstraint.constant = 10
         
     }
 
@@ -56,6 +63,11 @@ class InstagridViewController: UIViewController {
         
         self.leadUpWidhtConstraint.constant = 135
         self.trailUpWidthConstraint.constant = 135
+        self.leadDownWidthConstraint.constant = 280
+        self.trailDownWidthConstraint.constant = 0
+        
+        self.trailUpTrailConstraint.constant = 10
+        self.trailDownTrailConstraint.constant = 0
     }
 
     @IBAction func layout3ImageTapped(_ sender: UITapGestureRecognizer) {
@@ -63,6 +75,14 @@ class InstagridViewController: UIViewController {
         self.layout1Button.image = layout1Image
         self.layout2Button.image = layout2Image
         self.layout3Button.image = selectedLayout
+        
+        self.leadUpWidhtConstraint.constant = 135
+        self.trailUpWidthConstraint.constant = 135
+        self.leadDownWidthConstraint.constant = 135
+        self.trailDownWidthConstraint.constant = 135
+        
+        self.trailUpTrailConstraint.constant = 10
+        self.trailDownTrailConstraint.constant = 10
     }
 
 }
