@@ -14,6 +14,8 @@ class InstagridViewController: UIViewController {
     let layout1Image = UIImage(named: "Layout 1")
     let layout2Image = UIImage(named: "Layout 2")
     let layout3Image = UIImage(named: "Layout 3")
+    
+    var isPhotoLibraryAccessAllowed = false
 
     @IBOutlet weak var gridView: GridView!
     
@@ -45,43 +47,59 @@ class InstagridViewController: UIViewController {
          switch status {
          case .authorized:
              // L'accès à la bibliothèque est déjà autorisé, vous pouvez accéder aux photos ici.
-             break
+             self.isPhotoLibraryAccessAllowed = true
          case .notDetermined:
              // Vous n'avez pas encore demandé l'accès, demandez-le maintenant.
              PHPhotoLibrary.requestAuthorization { [self] status in
                  DispatchQueue.main.async {
                      if status == .authorized {
-                         // L'accès a été accordé
+                         self.enablePhotoLibraryFeatures()
+                         self.isPhotoLibraryAccessAllowed = true
                      } else {
                          // L'accès a été refusé ou restreint, montrez l'alerte.
-                         self.showSettingsAlert()
+                         self.disablePhotoLibraryFeatures()
                      }
                  }
              }
          default:
              // L'accès a été refusé ou restreint, montrez l'alerte.
-             showSettingsAlert()
+             self.disablePhotoLibraryFeatures()
              break
          }
     }
     
-    func showSettingsAlert() {
+    func enablePhotoLibraryFeatures() {
+        // Activez ici les fonctionnalités liées à la bibliothèque photo
+        // Par exemple, activez les ImageButton.
+        self.leadUpSquare.isUserInteractionEnabled = true
+        self.trailUpSquare.isUserInteractionEnabled = true
+        self.leadDownSquare.isUserInteractionEnabled = true
+        self.trailDownSquare.isUserInteractionEnabled = true
+        
+        // Montrez ici les éléments de l'interface utilisateur qui permettent d'accéder à la bibliothèque photo
+    }
+    
+    func disablePhotoLibraryFeatures() {
+        // Désactivez ici les fonctionnalités liées à la bibliothèque photo
+        // Par exemple, vous pouvez désactiver les boutons qui permettent d'accéder à la bibliothèque.
+        
+        // Affichez un message d'information à l'utilisateur
         let alertController = UIAlertController(
-            title: "Accès à la bibliothèque de photos",
-            message: "Pour utiliser cette fonctionnalité, veuillez activer l'accès à la bibliothèque de photos dans les paramètres de l'application.",
+            title: "Accès à la bibliothèque de photos refusé",
+            message: "Pour utiliser cette fonctionnalité, veuillez autoriser l'accès à la bibliothèque de photos dans les paramètres de l'application.",
             preferredStyle: .alert
         )
         
-        alertController.addAction(UIAlertAction(title: "Annuler", style: .cancel, handler: nil))
-        
-        alertController.addAction(UIAlertAction(title: "Paramètres", style: .default, handler: { action in
-            if let settingsURL = URL(string: UIApplication.openSettingsURLString) {
-                UIApplication.shared.open(settingsURL, options: [:], completionHandler: nil)
-            }
-        }))
+        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         
         present(alertController, animated: true, completion: nil)
+        
+        self.leadUpSquare.isUserInteractionEnabled = false
+        self.trailUpSquare.isUserInteractionEnabled = false
+        self.leadDownSquare.isUserInteractionEnabled = false
+        self.trailDownSquare.isUserInteractionEnabled = false
     }
+
 
     
     private func setupLayout(layoutType: LayoutType) {
