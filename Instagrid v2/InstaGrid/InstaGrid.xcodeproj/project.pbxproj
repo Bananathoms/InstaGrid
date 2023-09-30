@@ -22,6 +22,7 @@
 		DE67BC142ABFCF5800280306 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE67BC132ABFCF5800280306 /* Extension.swift */; };
 		DE67BC662AC3A4CC00280306 /* Delm-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = DE67BC642AC3A4CC00280306 /* Delm-Medium.otf */; };
 		DE67BC672AC3A4CC00280306 /* ThirstySoftRegular.otf in Resources */ = {isa = PBXBuildFile; fileRef = DE67BC652AC3A4CC00280306 /* ThirstySoftRegular.otf */; };
+		DE67BC6D2AC88D7500280306 /* AuthorizationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE67BC6C2AC88D7500280306 /* AuthorizationController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		DE67BC132ABFCF5800280306 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		DE67BC642AC3A4CC00280306 /* Delm-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Delm-Medium.otf"; path = "../../../../../../../../../Downloads/Delm-Medium.otf"; sourceTree = "<group>"; };
 		DE67BC652AC3A4CC00280306 /* ThirstySoftRegular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = ThirstySoftRegular.otf; path = ../../../../../../../../../Downloads/ThirstySoftRegular.otf; sourceTree = "<group>"; };
+		DE67BC6C2AC88D7500280306 /* AuthorizationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				DE19E6CA2AB91A410049EE7A /* InstagridViewController.swift */,
+				DE67BC6C2AC88D7500280306 /* AuthorizationController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -323,6 +326,7 @@
 				DE67BC142ABFCF5800280306 /* Extension.swift in Sources */,
 				DE19E6C72AB91A410049EE7A /* AppDelegate.swift in Sources */,
 				DE19E6FF2AB926340049EE7A /* Layout.swift in Sources */,
+				DE67BC6D2AC88D7500280306 /* AuthorizationController.swift in Sources */,
 				DE19E6FB2AB925C50049EE7A /* GridView.swift in Sources */,
 				DE19E6C92AB91A410049EE7A /* SceneDelegate.swift in Sources */,
 			);
