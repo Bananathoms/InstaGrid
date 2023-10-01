@@ -4,8 +4,6 @@
 <dict>
 	<key>PHPhotoLibraryPreventAutomaticLimitedAccessAlert</key>
 	<true/>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Nous avons besoin d&apos;accéder à votre galerie de photos pour choisir une image à afficher.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>ThirstySoftRegular</string>

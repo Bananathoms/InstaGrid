@@ -71,7 +71,74 @@ class InstagridViewController: UIViewController, GridViewDelegate {
              self.disablePhotoLibraryFeatures()
              break
          }
+        
+        // Ajoutez un observateur pour détecter les changements d'orientation de l'appareil.
+        NotificationCenter.default.addObserver(self, selector: #selector(orientationChanged), name: UIDevice.orientationDidChangeNotification, object: nil)
+
     }
+    
+    
+    @objc func orientationChanged() {
+        // Obtenir l'orientation actuelle de l'appareil
+        let orientation = UIDevice.current.orientation
+        
+        // Activer le geste de balayage approprié en fonction de l'orientation
+        switch orientation {
+        case .portrait, .portraitUpsideDown:
+            enableSwipeUpGesture()
+            disableSwipeLeftGesture()
+        case .landscapeLeft, .landscapeRight:
+            enableSwipeLeftGesture()
+            disableSwipeUpGesture()
+        default:
+            break
+        }
+    }
+    
+    func enableSwipeUpGesture() {
+        // Activer le swipe up
+        // Par exemple, ajoutez un geste swipe up à la vue.
+        let swipeUpGesture = UISwipeGestureRecognizer(target: self, action: #selector(swipeGesture(with:)))
+        swipeUpGesture.direction = .up
+        self.view.addGestureRecognizer(swipeUpGesture)
+        
+        // Désactiver le swipe left
+        // Par exemple, en supprimant un geste swipe left de la vue.
+        if let swipeLeftGesture = self.view.gestureRecognizers?.first(where: { ($0 as? UISwipeGestureRecognizer)?.direction == .left }) {
+            self.view.removeGestureRecognizer(swipeLeftGesture)
+        }
+    }
+    
+    func disableSwipeUpGesture() {
+        // Désactiver le swipe up
+        // Par exemple, en supprimant un geste swipe up de la vue s'il existe.
+        if let swipeUpGesture = self.view.gestureRecognizers?.first(where: { ($0 as? UISwipeGestureRecognizer)?.direction == .up }) {
+            self.view.removeGestureRecognizer(swipeUpGesture)
+        }
+    }
+
+    func enableSwipeLeftGesture() {
+        // Activer le swipe left
+        // Par exemple, ajoutez un geste swipe left à la vue.
+        let swipeLeftGesture = UISwipeGestureRecognizer(target: self, action: #selector(swipeGesture(with:)))
+        swipeLeftGesture.direction = .left
+        self.view.addGestureRecognizer(swipeLeftGesture)
+        
+        // Désactiver le swipe up
+        // Par exemple, en supprimant un geste swipe up de la vue.
+        if let swipeUpGesture = self.view.gestureRecognizers?.first(where: { ($0 as? UISwipeGestureRecognizer)?.direction == .up }) {
+            self.view.removeGestureRecognizer(swipeUpGesture)
+        }
+    }
+    
+    func disableSwipeLeftGesture() {
+        // Désactiver le swipe left
+        // Par exemple, en supprimant un geste swipe left de la vue s'il existe.
+        if let swipeLeftGesture = self.view.gestureRecognizers?.first(where: { ($0 as? UISwipeGestureRecognizer)?.direction == .left }) {
+            self.view.removeGestureRecognizer(swipeLeftGesture)
+        }
+    }
+
     
     func gridViewDidSwipeUp(_ gridView: GridView) {
         // Gérer l'action en réponse au balayage vers le haut.
@@ -86,13 +153,13 @@ class InstagridViewController: UIViewController, GridViewDelegate {
         swipeUp[0].direction = .up
         swipeUp.append(UISwipeGestureRecognizer(target: self, action: #selector(swipeGesture(with:))))
         swipeUp[1].direction = .up
-        swipeStack.addGestureRecognizer(swipeUp[0])
+        self.view.addGestureRecognizer(swipeUp[0])
         
         swipeLeft.append(UISwipeGestureRecognizer(target: self, action: #selector(swipeGesture(with:))))
         swipeLeft[0].direction = .left
         swipeLeft.append(UISwipeGestureRecognizer(target: self, action: #selector(swipeGesture(with:))))
         swipeLeft[1].direction = .left
-        swipeStack.addGestureRecognizer(swipeUp[0])
+        self.view.addGestureRecognizer(swipeUp[0])
     }
     
     @objc func swipeGesture(with gesture: UISwipeGestureRecognizer) {
@@ -103,7 +170,7 @@ class InstagridViewController: UIViewController, GridViewDelegate {
                 shareImage(capturedImage, deviceOrientation: "portrait")
             }
         case .left:
-            moveViewHorizontally(.out)
+            moveViewHorizontally(.out, fractionOfScreen: 1/5)
             if let capturedImage = captureGridViewImage() {
                 shareImage(capturedImage, deviceOrientation: "landscape")
             }
@@ -122,7 +189,7 @@ class InstagridViewController: UIViewController, GridViewDelegate {
             }
         case "landscape":
             activityViewController.completionWithItemsHandler = { [weak self] (_, completed, _, _) in
-                    self?.moveViewHorizontally(.backIn)
+                self?.moveViewHorizontally(.backIn, fractionOfScreen: 1/5)
             }
         default:
             break
@@ -148,11 +215,13 @@ class InstagridViewController: UIViewController, GridViewDelegate {
         }
     }
 
-    private func moveViewHorizontally(_ movement: ViewDirection) {
+    private func moveViewHorizontally(_ movement: ViewDirection, fractionOfScreen: CGFloat) {
+        let screenHeight = view.frame.height
+        let translationY = screenHeight * fractionOfScreen
         switch movement {
         case .out:
             UIView.animate(withDuration: 0.5) {
-                self.gridView.transform = CGAffineTransform(translationX: -self.view.frame.width, y: 0)
+                self.gridView.transform = CGAffineTransform(translationX: -translationY, y: 0)
             }
         case .backIn:
             UIView.animate(withDuration: 0.5) {
