@@ -23,6 +23,8 @@
 		DE67BC662AC3A4CC00280306 /* Delm-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = DE67BC642AC3A4CC00280306 /* Delm-Medium.otf */; };
 		DE67BC672AC3A4CC00280306 /* ThirstySoftRegular.otf in Resources */ = {isa = PBXBuildFile; fileRef = DE67BC652AC3A4CC00280306 /* ThirstySoftRegular.otf */; };
 		DE67BC6D2AC88D7500280306 /* AuthorizationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE67BC6C2AC88D7500280306 /* AuthorizationController.swift */; };
+		DE67BC6F2AC9C25E00280306 /* ViewDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE67BC6E2AC9C25E00280306 /* ViewDirection.swift */; };
+		DE67BC712AC9C31900280306 /* RenderViewToImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE67BC702AC9C31900280306 /* RenderViewToImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +65,8 @@
 		DE67BC642AC3A4CC00280306 /* Delm-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Delm-Medium.otf"; path = "../../../../../../../../../Downloads/Delm-Medium.otf"; sourceTree = "<group>"; };
 		DE67BC652AC3A4CC00280306 /* ThirstySoftRegular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = ThirstySoftRegular.otf; path = ../../../../../../../../../Downloads/ThirstySoftRegular.otf; sourceTree = "<group>"; };
 		DE67BC6C2AC88D7500280306 /* AuthorizationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationController.swift; sourceTree = "<group>"; };
+		DE67BC6E2AC9C25E00280306 /* ViewDirection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDirection.swift; sourceTree = "<group>"; };
+		DE67BC702AC9C31900280306 /* RenderViewToImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderViewToImage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +160,8 @@
 			isa = PBXGroup;
 			children = (
 				DE19E6FE2AB926340049EE7A /* Layout.swift */,
+				DE67BC6E2AC9C25E00280306 /* ViewDirection.swift */,
+				DE67BC702AC9C31900280306 /* RenderViewToImage.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -326,7 +332,9 @@
 				DE67BC142ABFCF5800280306 /* Extension.swift in Sources */,
 				DE19E6C72AB91A410049EE7A /* AppDelegate.swift in Sources */,
 				DE19E6FF2AB926340049EE7A /* Layout.swift in Sources */,
+				DE67BC712AC9C31900280306 /* RenderViewToImage.swift in Sources */,
 				DE67BC6D2AC88D7500280306 /* AuthorizationController.swift in Sources */,
+				DE67BC6F2AC9C25E00280306 /* ViewDirection.swift in Sources */,
 				DE19E6FB2AB925C50049EE7A /* GridView.swift in Sources */,
 				DE19E6C92AB91A410049EE7A /* SceneDelegate.swift in Sources */,
 			);

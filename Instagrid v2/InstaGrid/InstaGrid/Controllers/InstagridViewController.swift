@@ -8,7 +8,7 @@
 import UIKit
 import Photos
 
-class InstagridViewController: UIViewController {
+class InstagridViewController: UIViewController, GridViewDelegate {
     
     let selectedLayout = UIImage(named: "Selected")
     let layout1Image = UIImage(named: "Layout 1")
@@ -28,6 +28,9 @@ class InstagridViewController: UIViewController {
     @IBOutlet weak var leadDownSquare: ImageButton!
     @IBOutlet weak var trailDownSquare: ImageButton!
     
+    
+    @IBOutlet weak var swipeStack: UIStackView!
+    
     @IBOutlet weak var leadUpWidhtConstraint: NSLayoutConstraint!
     @IBOutlet weak var trailUpWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var leadDownWidthConstraint: NSLayoutConstraint!
@@ -38,7 +41,9 @@ class InstagridViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        gridView.delegate = self
         setupLayout(layoutType: .layout1)
+        self.createSwipeGesture()
         
         
          // Vérifiez si vous avez déjà demandé l'accès à la bibliothèque
@@ -66,6 +71,101 @@ class InstagridViewController: UIViewController {
              self.disablePhotoLibraryFeatures()
              break
          }
+    }
+    
+    func gridViewDidSwipeUp(_ gridView: GridView) {
+        // Gérer l'action en réponse au balayage vers le haut.
+        // Par exemple, vous pouvez effectuer une transition vers une autre vue.
+    }
+    
+    private func createSwipeGesture() {
+        var swipeUp = [UISwipeGestureRecognizer]()
+        var swipeLeft = [UISwipeGestureRecognizer]()
+        
+        swipeUp.append(UISwipeGestureRecognizer(target: self, action: #selector(swipeGesture(with:))))
+        swipeUp[0].direction = .up
+        swipeUp.append(UISwipeGestureRecognizer(target: self, action: #selector(swipeGesture(with:))))
+        swipeUp[1].direction = .up
+        swipeStack.addGestureRecognizer(swipeUp[0])
+        
+        swipeLeft.append(UISwipeGestureRecognizer(target: self, action: #selector(swipeGesture(with:))))
+        swipeLeft[0].direction = .left
+        swipeLeft.append(UISwipeGestureRecognizer(target: self, action: #selector(swipeGesture(with:))))
+        swipeLeft[1].direction = .left
+        swipeStack.addGestureRecognizer(swipeUp[0])
+    }
+    
+    @objc func swipeGesture(with gesture: UISwipeGestureRecognizer) {
+        switch gesture.direction {
+        case .up:
+            moveViewVertically(.out, fractionOfScreen: 1/5)
+            if let capturedImage = captureGridViewImage() {
+                shareImage(capturedImage, deviceOrientation: "portrait")
+            }
+        case .left:
+            moveViewHorizontally(.out)
+            if let capturedImage = captureGridViewImage() {
+                shareImage(capturedImage, deviceOrientation: "landscape")
+            }
+        default:
+            break
+        }
+    }
+
+    private func shareImage(_ imageToShare: UIImage, deviceOrientation: String) {
+        let activityViewController = UIActivityViewController(activityItems: [imageToShare], applicationActivities: nil)
+        
+        switch deviceOrientation {
+        case "portrait":
+            activityViewController.completionWithItemsHandler = { [weak self] (_, completed, _, _) in
+                self?.moveViewVertically(.backIn, fractionOfScreen: 1/5)
+            }
+        case "landscape":
+            activityViewController.completionWithItemsHandler = { [weak self] (_, completed, _, _) in
+                    self?.moveViewHorizontally(.backIn)
+            }
+        default:
+            break
+        }
+        
+        present(activityViewController, animated: true, completion: nil)
+    }
+    
+    private func moveViewVertically(_ movement: ViewDirection, fractionOfScreen: CGFloat) {
+        let screenHeight = view.frame.height
+        let translationY = screenHeight * fractionOfScreen
+        switch movement {
+        case .out:
+            UIView.animate(withDuration: 0.5) {
+                self.gridView.transform = CGAffineTransform(translationX: 0, y: -translationY)
+                self.swipeStack.transform = CGAffineTransform(translationX: 0, y: -self.view.frame.height)
+            }
+        case .backIn:
+            UIView.animate(withDuration: 0.5) {
+                self.gridView.transform = .identity
+                self.swipeStack.transform = .identity
+            }
+        }
+    }
+
+    private func moveViewHorizontally(_ movement: ViewDirection) {
+        switch movement {
+        case .out:
+            UIView.animate(withDuration: 0.5) {
+                self.gridView.transform = CGAffineTransform(translationX: -self.view.frame.width, y: 0)
+            }
+        case .backIn:
+            UIView.animate(withDuration: 0.5) {
+                self.gridView.transform = .identity
+            }
+        }
+    }
+
+    func captureGridViewImage() -> UIImage? {
+        UIGraphicsBeginImageContextWithOptions(gridView.bounds.size, gridView.isOpaque, 0)
+        defer { UIGraphicsEndImageContext() }
+        gridView.drawHierarchy(in: gridView.bounds, afterScreenUpdates: true)
+        return UIGraphicsGetImageFromCurrentImageContext()
     }
     
     func enablePhotoLibraryFeatures() {
