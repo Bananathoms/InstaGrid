@@ -149,12 +149,12 @@ class InstagridViewController: UIViewController, GridViewDelegate {
     @objc func swipeGesture(with gesture: UISwipeGestureRecognizer) {
         switch gesture.direction {
         case .up:
-            moveViewVertically(.out, fractionOfScreen: 1/5)
+            moveViewVertically(.out)
             if let capturedImage = captureGridViewImage() {
                 shareImage(capturedImage, deviceOrientation: "portrait")
             }
         case .left:
-            moveViewHorizontally(.out, fractionOfScreen: 1/5)
+            moveViewHorizontally(.out)
             if let capturedImage = captureGridViewImage() {
                 shareImage(capturedImage, deviceOrientation: "landscape")
             }
@@ -169,11 +169,11 @@ class InstagridViewController: UIViewController, GridViewDelegate {
         switch deviceOrientation {
         case "portrait":
             activityViewController.completionWithItemsHandler = { [weak self] (_, completed, _, _) in
-                self?.moveViewVertically(.backIn, fractionOfScreen: 1/5)
+                self?.moveViewVertically(.backIn)
             }
         case "landscape":
             activityViewController.completionWithItemsHandler = { [weak self] (_, completed, _, _) in
-                self?.moveViewHorizontally(.backIn, fractionOfScreen: 1/5)
+                self?.moveViewHorizontally(.backIn)
             }
         default:
             break
@@ -182,13 +182,11 @@ class InstagridViewController: UIViewController, GridViewDelegate {
         present(activityViewController, animated: true, completion: nil)
     }
     
-    private func moveViewVertically(_ movement: ViewDirection, fractionOfScreen: CGFloat) {
-        let screenHeight = view.frame.height
-        let translationY = screenHeight * fractionOfScreen
+    private func moveViewVertically(_ movement: ViewDirection) {
         switch movement {
         case .out:
             UIView.animate(withDuration: 0.5) {
-                self.gridView.transform = CGAffineTransform(translationX: 0, y: -translationY)
+                self.gridView.transform = CGAffineTransform(translationX: 0, y: -self.view.frame.height)
                 self.swipeStack.transform = CGAffineTransform(translationX: 0, y: -self.view.frame.height)
             }
         case .backIn:
@@ -199,13 +197,11 @@ class InstagridViewController: UIViewController, GridViewDelegate {
         }
     }
 
-    private func moveViewHorizontally(_ movement: ViewDirection, fractionOfScreen: CGFloat) {
-        let screenHeight = view.frame.height
-        let translationY = screenHeight * fractionOfScreen
+    private func moveViewHorizontally(_ movement: ViewDirection) {
         switch movement {
         case .out:
             UIView.animate(withDuration: 0.5) {
-                self.gridView.transform = CGAffineTransform(translationX: -translationY, y: 0)
+                self.gridView.transform = CGAffineTransform(translationX: -self.view.frame.width, y: 0)
             }
         case .backIn:
             UIView.animate(withDuration: 0.5) {

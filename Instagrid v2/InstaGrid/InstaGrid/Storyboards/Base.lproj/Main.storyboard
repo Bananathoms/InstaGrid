@@ -86,8 +86,41 @@
                                     <constraint firstItem="XNM-Tk-GMH" firstAttribute="top" secondItem="AOc-y7-o3h" secondAttribute="top" constant="10" id="rV0-lo-L03"/>
                                 </constraints>
                             </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="bhS-pV-via" userLabel="swipe Stack View">
+                                <rect key="frame" x="116.33333333333333" y="197.66666666666666" width="160.33333333333337" height="57"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Arrow Left" translatesAutoresizingMaskIntoConstraints="NO" id="1ks-We-Uyw">
+                                        <rect key="frame" x="70.333333333333329" y="0.0" width="20" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="20" id="B6d-9R-rMt"/>
+                                            <constraint firstAttribute="height" constant="20" id="CMf-Xp-oPp"/>
+                                        </constraints>
+                                        <variation key="heightClass=regular-widthClass=compact" image="Arrow Up"/>
+                                    </imageView>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe up to share" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JJh-gQ-qNQ">
+                                        <rect key="frame" x="0.0" y="28" width="160.33333333333334" height="29"/>
+                                        <fontDescription key="fontDescription" name="Delm-Medium" family="Delm" pointSize="26"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                        <variation key="heightClass=regular-widthClass=compact" hidden="NO"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe left to share" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t8y-rA-hiT">
+                                        <rect key="frame" x="-5.3333333333333286" y="57" width="171" height="0.0"/>
+                                        <fontDescription key="fontDescription" name="Delm-Medium" family="Delm" pointSize="26"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                        <variation key="heightClass=regular-widthClass=compact" hidden="YES"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instagrid" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8f2-m9-stG">
+                                <rect key="frame" x="0.0" y="64" width="393" height="39"/>
+                                <fontDescription key="fontDescription" name="ThirstySoftRegular" family="Thirsty Soft" pointSize="30"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="NOb-8M-Ioc">
-                                <rect key="frame" x="46.666666666666657" y="636" width="300" height="80"/>
+                                <rect key="frame" x="46" y="718" width="300" height="80"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Selected" translatesAutoresizingMaskIntoConstraints="NO" id="H0d-Qg-J7y">
                                         <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
@@ -125,39 +158,6 @@
                                 </subviews>
                                 <variation key="heightClass=compact-widthClass=regular" axis="vertical"/>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="bhS-pV-via" userLabel="swipe Stack View">
-                                <rect key="frame" x="116.33333333333333" y="197.66666666666666" width="160.33333333333337" height="57"/>
-                                <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Arrow Left" translatesAutoresizingMaskIntoConstraints="NO" id="1ks-We-Uyw">
-                                        <rect key="frame" x="70.333333333333329" y="0.0" width="20" height="20"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="20" id="B6d-9R-rMt"/>
-                                            <constraint firstAttribute="height" constant="20" id="CMf-Xp-oPp"/>
-                                        </constraints>
-                                        <variation key="heightClass=regular-widthClass=compact" image="Arrow Up"/>
-                                    </imageView>
-                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe up to share" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JJh-gQ-qNQ">
-                                        <rect key="frame" x="0.0" y="28" width="160.33333333333334" height="29"/>
-                                        <fontDescription key="fontDescription" name="Delm-Medium" family="Delm" pointSize="26"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                        <variation key="heightClass=regular-widthClass=compact" hidden="NO"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe left to share" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t8y-rA-hiT">
-                                        <rect key="frame" x="-5.3333333333333286" y="57" width="171" height="0.0"/>
-                                        <fontDescription key="fontDescription" name="Delm-Medium" family="Delm" pointSize="26"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                        <variation key="heightClass=regular-widthClass=compact" hidden="YES"/>
-                                    </label>
-                                </subviews>
-                            </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instagrid" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8f2-m9-stG">
-                                <rect key="frame" x="0.0" y="64" width="393" height="39"/>
-                                <fontDescription key="fontDescription" name="ThirstySoftRegular" family="Thirsty Soft" pointSize="30"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" name="InstagridBackround"/>
@@ -165,7 +165,7 @@
                             <constraint firstItem="AOc-y7-o3h" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="AvZ-1b-Ie1"/>
                             <constraint firstItem="8f2-m9-stG" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="5" id="Kd7-bq-5hv"/>
                             <constraint firstItem="NOb-8M-Ioc" firstAttribute="centerY" secondItem="AOc-y7-o3h" secondAttribute="centerY" id="PtI-8c-OhZ">
-                                <variation key="heightClass=regular-widthClass=compact" constant="250"/>
+                                <variation key="heightClass=regular-widthClass=compact" constant="332"/>
                             </constraint>
                             <constraint firstItem="8f2-m9-stG" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Yho-Ob-Jh3"/>
                             <constraint firstItem="bhS-pV-via" firstAttribute="centerX" secondItem="AOc-y7-o3h" secondAttribute="centerX" constant="-250" id="k8I-96-FXK">

@@ -22,7 +22,6 @@ extension UIView {
 }
 
 extension UIImage {
-    //redimentionnement de l'image
     func scale(to size: CGSize) -> UIImage {
         UIGraphicsBeginImageContextWithOptions(size, false, UIScreen.main.scale)
         defer { UIGraphicsEndImageContext() }
