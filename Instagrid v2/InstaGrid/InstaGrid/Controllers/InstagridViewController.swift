@@ -46,43 +46,40 @@ class InstagridViewController: UIViewController, GridViewDelegate {
         self.createSwipeGesture()
         
         
-         // Vérifiez si vous avez déjà demandé l'accès à la bibliothèque
+         /// Ask library acces
          let status = PHPhotoLibrary.authorizationStatus()
          
          switch status {
          case .authorized:
-             // L'accès à la bibliothèque est déjà autorisé, vous pouvez accéder aux photos ici.
+             /// acces authorized to all photos
              self.isPhotoLibraryAccessAllowed = true
          case .notDetermined:
-             // Vous n'avez pas encore demandé l'accès, demandez-le maintenant.
+             /// acces not determined
              PHPhotoLibrary.requestAuthorization { [self] status in
                  DispatchQueue.main.async {
                      if status == .authorized {
                          self.enablePhotoLibraryFeatures()
                          self.isPhotoLibraryAccessAllowed = true
                      } else {
-                         // L'accès a été refusé ou restreint, montrez l'alerte.
                          self.disablePhotoLibraryFeatures()
                      }
                  }
              }
          default:
-             // L'accès a été refusé ou restreint, montrez l'alerte.
              self.disablePhotoLibraryFeatures()
              break
          }
         
-        // Ajoutez un observateur pour détecter les changements d'orientation de l'appareil.
+        /// Orientation observer
         NotificationCenter.default.addObserver(self, selector: #selector(orientationChanged), name: UIDevice.orientationDidChangeNotification, object: nil)
 
     }
     
     
     @objc func orientationChanged() {
-        // Obtenir l'orientation actuelle de l'appareil
+        /// device orientation
         let orientation = UIDevice.current.orientation
         
-        // Activer le geste de balayage approprié en fonction de l'orientation
         switch orientation {
         case .portrait, .portraitUpsideDown:
             enableSwipeUpGesture()
@@ -96,44 +93,32 @@ class InstagridViewController: UIViewController, GridViewDelegate {
     }
     
     func enableSwipeUpGesture() {
-        // Activer le swipe up
-        // Par exemple, ajoutez un geste swipe up à la vue.
         let swipeUpGesture = UISwipeGestureRecognizer(target: self, action: #selector(swipeGesture(with:)))
         swipeUpGesture.direction = .up
         self.view.addGestureRecognizer(swipeUpGesture)
         
-        // Désactiver le swipe left
-        // Par exemple, en supprimant un geste swipe left de la vue.
         if let swipeLeftGesture = self.view.gestureRecognizers?.first(where: { ($0 as? UISwipeGestureRecognizer)?.direction == .left }) {
             self.view.removeGestureRecognizer(swipeLeftGesture)
         }
     }
     
     func disableSwipeUpGesture() {
-        // Désactiver le swipe up
-        // Par exemple, en supprimant un geste swipe up de la vue s'il existe.
         if let swipeUpGesture = self.view.gestureRecognizers?.first(where: { ($0 as? UISwipeGestureRecognizer)?.direction == .up }) {
             self.view.removeGestureRecognizer(swipeUpGesture)
         }
     }
 
     func enableSwipeLeftGesture() {
-        // Activer le swipe left
-        // Par exemple, ajoutez un geste swipe left à la vue.
         let swipeLeftGesture = UISwipeGestureRecognizer(target: self, action: #selector(swipeGesture(with:)))
         swipeLeftGesture.direction = .left
         self.view.addGestureRecognizer(swipeLeftGesture)
         
-        // Désactiver le swipe up
-        // Par exemple, en supprimant un geste swipe up de la vue.
         if let swipeUpGesture = self.view.gestureRecognizers?.first(where: { ($0 as? UISwipeGestureRecognizer)?.direction == .up }) {
             self.view.removeGestureRecognizer(swipeUpGesture)
         }
     }
     
     func disableSwipeLeftGesture() {
-        // Désactiver le swipe left
-        // Par exemple, en supprimant un geste swipe left de la vue s'il existe.
         if let swipeLeftGesture = self.view.gestureRecognizers?.first(where: { ($0 as? UISwipeGestureRecognizer)?.direction == .left }) {
             self.view.removeGestureRecognizer(swipeLeftGesture)
         }
@@ -141,8 +126,7 @@ class InstagridViewController: UIViewController, GridViewDelegate {
 
     
     func gridViewDidSwipeUp(_ gridView: GridView) {
-        // Gérer l'action en réponse au balayage vers le haut.
-        // Par exemple, vous pouvez effectuer une transition vers une autre vue.
+        
     }
     
     private func createSwipeGesture() {
@@ -238,21 +222,14 @@ class InstagridViewController: UIViewController, GridViewDelegate {
     }
     
     func enablePhotoLibraryFeatures() {
-        // Activez ici les fonctionnalités liées à la bibliothèque photo
-        // Par exemple, activez les ImageButton.
         self.leadUpSquare.isUserInteractionEnabled = true
         self.trailUpSquare.isUserInteractionEnabled = true
         self.leadDownSquare.isUserInteractionEnabled = true
         self.trailDownSquare.isUserInteractionEnabled = true
         
-        // Montrez ici les éléments de l'interface utilisateur qui permettent d'accéder à la bibliothèque photo
     }
     
     func disablePhotoLibraryFeatures() {
-        // Désactivez ici les fonctionnalités liées à la bibliothèque photo
-        // Par exemple, vous pouvez désactiver les boutons qui permettent d'accéder à la bibliothèque.
-        
-        // Affichez un message d'information à l'utilisateur
         let alertController = UIAlertController(
             title: "Accès à la bibliothèque de photos refusé",
             message: "Pour utiliser cette fonctionnalité, veuillez autoriser l'accès à la bibliothèque de photos dans les paramètres de l'application.",

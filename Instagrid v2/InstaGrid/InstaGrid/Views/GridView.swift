@@ -47,7 +47,6 @@ class GridView: UIView {
 
     @objc private func handleSwipeUp(_ gesture: UISwipeGestureRecognizer) {
         if gesture.direction == .up {
-            // Appel de la délégation pour informer qu'un swipe vers le haut a été effectué
             delegate?.gridViewDidSwipeUp(self)
         }
     }

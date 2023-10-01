@@ -38,20 +38,15 @@ class ImageButton: UIButton {
         if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
             let imagePicker = UIImagePickerController()
             imagePicker.sourceType = .photoLibrary
-            imagePicker.delegate = self // Assurez-vous que votre classe ImageButton adopte UIImagePickerControllerDelegate
-            // Present the image picker
+            imagePicker.delegate = self
             findViewController()?.present(imagePicker, animated: true, completion: nil)
         }
     }
-
-
 }
 
-// Implement the UIImagePickerControllerDelegate methods
 extension ImageButton: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[.originalImage] as? UIImage {
-            // Redimensionner l'image pour qu'elle s'adapte à la taille du bouton
             let buttonSize = self.frame.size
             let scaledImage = image.scale(to: buttonSize)
 
