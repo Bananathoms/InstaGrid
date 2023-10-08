@@ -19,12 +19,14 @@
 		DE19E6FB2AB925C50049EE7A /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE19E6FA2AB925C50049EE7A /* GridView.swift */; };
 		DE19E6FF2AB926340049EE7A /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE19E6FE2AB926340049EE7A /* Layout.swift */; };
 		DE67BC102ABE7F9A00280306 /* ImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE67BC0F2ABE7F9A00280306 /* ImageButton.swift */; };
-		DE67BC142ABFCF5800280306 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE67BC132ABFCF5800280306 /* Extension.swift */; };
+		DE67BC142ABFCF5800280306 /* Extensions+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE67BC132ABFCF5800280306 /* Extensions+UIView.swift */; };
 		DE67BC662AC3A4CC00280306 /* Delm-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = DE67BC642AC3A4CC00280306 /* Delm-Medium.otf */; };
 		DE67BC672AC3A4CC00280306 /* ThirstySoftRegular.otf in Resources */ = {isa = PBXBuildFile; fileRef = DE67BC652AC3A4CC00280306 /* ThirstySoftRegular.otf */; };
 		DE67BC6D2AC88D7500280306 /* AuthorizationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE67BC6C2AC88D7500280306 /* AuthorizationController.swift */; };
 		DE67BC6F2AC9C25E00280306 /* ViewDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE67BC6E2AC9C25E00280306 /* ViewDirection.swift */; };
 		DE67BC712AC9C31900280306 /* RenderViewToImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE67BC702AC9C31900280306 /* RenderViewToImage.swift */; };
+		DEE695732AD3595900315B2B /* Extensions+UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE695722AD3595900315B2B /* Extensions+UIImage.swift */; };
+		DEE695762AD359A200315B2B /* LayoutType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE695752AD359A200315B2B /* LayoutType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,12 +63,14 @@
 		DE19E6FA2AB925C50049EE7A /* GridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridView.swift; sourceTree = "<group>"; };
 		DE19E6FE2AB926340049EE7A /* Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
 		DE67BC0F2ABE7F9A00280306 /* ImageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageButton.swift; sourceTree = "<group>"; };
-		DE67BC132ABFCF5800280306 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		DE67BC132ABFCF5800280306 /* Extensions+UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions+UIView.swift"; sourceTree = "<group>"; };
 		DE67BC642AC3A4CC00280306 /* Delm-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Delm-Medium.otf"; path = "../../../../../../../../../Downloads/Delm-Medium.otf"; sourceTree = "<group>"; };
 		DE67BC652AC3A4CC00280306 /* ThirstySoftRegular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = ThirstySoftRegular.otf; path = ../../../../../../../../../Downloads/ThirstySoftRegular.otf; sourceTree = "<group>"; };
 		DE67BC6C2AC88D7500280306 /* AuthorizationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationController.swift; sourceTree = "<group>"; };
 		DE67BC6E2AC9C25E00280306 /* ViewDirection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDirection.swift; sourceTree = "<group>"; };
 		DE67BC702AC9C31900280306 /* RenderViewToImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderViewToImage.swift; sourceTree = "<group>"; };
+		DEE695722AD3595900315B2B /* Extensions+UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions+UIImage.swift"; sourceTree = "<group>"; };
+		DEE695752AD359A200315B2B /* LayoutType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,7 +101,6 @@
 		DE19E6BA2AB91A410049EE7A = {
 			isa = PBXGroup;
 			children = (
-				DE67BC132ABFCF5800280306 /* Extension.swift */,
 				DE19E6C52AB91A410049EE7A /* InstaGrid */,
 				DE19E6DC2AB91A430049EE7A /* InstaGridTests */,
 				DE19E6E62AB91A430049EE7A /* InstaGridUITests */,
@@ -125,6 +128,8 @@
 				DE19E6FC2AB925FA0049EE7A /* Views */,
 				DE67BC032ABE732300280306 /* Controllers */,
 				DE67BC042ABE734100280306 /* Storyboards */,
+				DEE695742AD3597D00315B2B /* Enum */,
+				DEE695712AD358A300315B2B /* Extensions */,
 				DE67BC052ABE735800280306 /* Ressources */,
 			);
 			path = InstaGrid;
@@ -160,7 +165,6 @@
 			isa = PBXGroup;
 			children = (
 				DE19E6FE2AB926340049EE7A /* Layout.swift */,
-				DE67BC6E2AC9C25E00280306 /* ViewDirection.swift */,
 				DE67BC702AC9C31900280306 /* RenderViewToImage.swift */,
 			);
 			path = Models;
@@ -192,6 +196,25 @@
 				DE67BC652AC3A4CC00280306 /* ThirstySoftRegular.otf */,
 			);
 			path = Ressources;
+			sourceTree = "<group>";
+		};
+		DEE695712AD358A300315B2B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				DE67BC132ABFCF5800280306 /* Extensions+UIView.swift */,
+				DEE695722AD3595900315B2B /* Extensions+UIImage.swift */,
+			);
+			name = Extensions;
+			path = ../Extensions;
+			sourceTree = "<group>";
+		};
+		DEE695742AD3597D00315B2B /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				DE67BC6E2AC9C25E00280306 /* ViewDirection.swift */,
+				DEE695752AD359A200315B2B /* LayoutType.swift */,
+			);
+			path = Enum;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -329,8 +352,10 @@
 			files = (
 				DE19E6CB2AB91A410049EE7A /* InstagridViewController.swift in Sources */,
 				DE67BC102ABE7F9A00280306 /* ImageButton.swift in Sources */,
-				DE67BC142ABFCF5800280306 /* Extension.swift in Sources */,
+				DE67BC142ABFCF5800280306 /* Extensions+UIView.swift in Sources */,
 				DE19E6C72AB91A410049EE7A /* AppDelegate.swift in Sources */,
+				DEE695732AD3595900315B2B /* Extensions+UIImage.swift in Sources */,
+				DEE695762AD359A200315B2B /* LayoutType.swift in Sources */,
 				DE19E6FF2AB926340049EE7A /* Layout.swift in Sources */,
 				DE67BC712AC9C31900280306 /* RenderViewToImage.swift in Sources */,
 				DE67BC6D2AC88D7500280306 /* AuthorizationController.swift in Sources */,

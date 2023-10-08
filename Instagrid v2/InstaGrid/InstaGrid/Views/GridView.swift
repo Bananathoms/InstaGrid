@@ -8,12 +8,6 @@
 import Foundation
 import UIKit
 
-
-/// Protocol to notify a delegate when a swipe-up gesture occurs in the grid view.
-protocol GridViewDelegate: AnyObject {
-    func gridViewDidSwipeUp(_ gridView: GridView)
-}
-
 /// Custom view representing the grid layout for photos.
 class GridView: UIView {
     
@@ -55,5 +49,10 @@ class GridView: UIView {
             delegate?.gridViewDidSwipeUp(self)
         }
     }
+}
+
+/// Protocol to notify a delegate when a swipe-up gesture occurs in the grid view.
+protocol GridViewDelegate: AnyObject {
+    func gridViewDidSwipeUp(_ gridView: GridView)
 }
 
