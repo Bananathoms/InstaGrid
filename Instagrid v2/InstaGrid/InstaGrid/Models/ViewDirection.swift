@@ -7,8 +7,8 @@
 
 import Foundation
 
+/// An enum representing view animation directions.
 enum ViewDirection {
-    case out
-    case backIn
-    
+    case out // Represents an animation moving a view out of the screen.
+    case backIn // Represents an animation moving a view back into its original position.
 }

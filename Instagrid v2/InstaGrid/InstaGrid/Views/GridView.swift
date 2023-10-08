@@ -9,10 +9,12 @@ import Foundation
 import UIKit
 
 
+/// Protocol to notify a delegate when a swipe-up gesture occurs in the grid view.
 protocol GridViewDelegate: AnyObject {
     func gridViewDidSwipeUp(_ gridView: GridView)
 }
 
+/// Custom view representing the grid layout for photos.
 class GridView: UIView {
     
     var delegate: GridViewDelegate?
@@ -39,12 +41,15 @@ class GridView: UIView {
         
     }
     
+    /// Sets up a swipe-up gesture recognizer on the grid view.
     private func setupSwipeGesture() {
         let swipeUpGesture = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipeUp(_:)))
         swipeUpGesture.direction = .up
         self.addGestureRecognizer(swipeUpGesture)
     }
-
+    
+    /// Handles the swipe-up gesture and notifies the delegate.
+    /// - Parameter gesture: The swipe gesture recognizer.
     @objc private func handleSwipeUp(_ gesture: UISwipeGestureRecognizer) {
         if gesture.direction == .up {
             delegate?.gridViewDidSwipeUp(self)

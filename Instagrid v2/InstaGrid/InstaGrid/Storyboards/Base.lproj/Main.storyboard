@@ -120,7 +120,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="NOb-8M-Ioc">
-                                <rect key="frame" x="46" y="718" width="300" height="80"/>
+                                <rect key="frame" x="46.666666666666657" y="718" width="300" height="80"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Selected" translatesAutoresizingMaskIntoConstraints="NO" id="H0d-Qg-J7y">
                                         <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>

@@ -8,32 +8,33 @@
 import UIKit
 import Photos
 
-/// Main view controller for the Instagrid app.
 class InstagridViewController: UIViewController, GridViewDelegate {
     
-    /// Images for layout selection buttons.
     let selectedLayout = UIImage(named: "Selected")
     let layout1Image = UIImage(named: "Layout 1")
     let layout2Image = UIImage(named: "Layout 2")
     let layout3Image = UIImage(named: "Layout 3")
     
-    /// Flag to track photo library access.
     var isPhotoLibraryAccessAllowed = false
 
-    /// Outlets for various UI elements.
     @IBOutlet weak var gridView: GridView!
+    
     @IBOutlet weak var layout1Button: UIImageView!
     @IBOutlet weak var layout2Button: UIImageView!
     @IBOutlet weak var layout3Button: UIImageView!
+    
     @IBOutlet weak var leadUpSquare: ImageButton!
     @IBOutlet weak var trailUpSquare: ImageButton!
     @IBOutlet weak var leadDownSquare: ImageButton!
     @IBOutlet weak var trailDownSquare: ImageButton!
+    
     @IBOutlet weak var swipeStack: UIStackView!
+    
     @IBOutlet weak var leadUpWidhtConstraint: NSLayoutConstraint!
     @IBOutlet weak var trailUpWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var leadDownWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var trailDownWidthConstraint: NSLayoutConstraint!
+    
     @IBOutlet weak var trailUpTrailConstraint: NSLayoutConstraint!
     @IBOutlet weak var trailDownTrailConstraint: NSLayoutConstraint!
     
@@ -73,7 +74,7 @@ class InstagridViewController: UIViewController, GridViewDelegate {
 
     }
     
-    /// Called when the device orientation changes.
+    
     @objc func orientationChanged() {
         /// device orientation
         let orientation = UIDevice.current.orientation
@@ -90,7 +91,6 @@ class InstagridViewController: UIViewController, GridViewDelegate {
         }
     }
     
-    /// Enables swipe up gesture.
     func enableSwipeUpGesture() {
         let swipeUpGesture = UISwipeGestureRecognizer(target: self, action: #selector(swipeGesture(with:)))
         swipeUpGesture.direction = .up
@@ -101,14 +101,12 @@ class InstagridViewController: UIViewController, GridViewDelegate {
         }
     }
     
-    /// Disables swipe up gesture.
     func disableSwipeUpGesture() {
         if let swipeUpGesture = self.view.gestureRecognizers?.first(where: { ($0 as? UISwipeGestureRecognizer)?.direction == .up }) {
             self.view.removeGestureRecognizer(swipeUpGesture)
         }
     }
-    
-    /// nables swipe left gesture.
+
     func enableSwipeLeftGesture() {
         let swipeLeftGesture = UISwipeGestureRecognizer(target: self, action: #selector(swipeGesture(with:)))
         swipeLeftGesture.direction = .left
@@ -119,19 +117,17 @@ class InstagridViewController: UIViewController, GridViewDelegate {
         }
     }
     
-    /// Disables swipe left gesture.
     func disableSwipeLeftGesture() {
         if let swipeLeftGesture = self.view.gestureRecognizers?.first(where: { ($0 as? UISwipeGestureRecognizer)?.direction == .left }) {
             self.view.removeGestureRecognizer(swipeLeftGesture)
         }
     }
 
-    /// Delegate method called when the grid view is swiped up.
+    
     func gridViewDidSwipeUp(_ gridView: GridView) {
         
     }
     
-    /// Creates swipe gestures for handling user interaction.
     private func createSwipeGesture() {
         var swipeUp = [UISwipeGestureRecognizer]()
         var swipeLeft = [UISwipeGestureRecognizer]()
@@ -149,8 +145,6 @@ class InstagridViewController: UIViewController, GridViewDelegate {
         self.view.addGestureRecognizer(swipeUp[0])
     }
     
-    /// Handles swipe gestures.
-    /// - Parameter gesture: Parameter gesture: The swipe gesture.
     @objc func swipeGesture(with gesture: UISwipeGestureRecognizer) {
         switch gesture.direction {
         case .up:
@@ -167,11 +161,7 @@ class InstagridViewController: UIViewController, GridViewDelegate {
             break
         }
     }
-    
-    /// Shares the captured image with the device's sharing options.
-    /// - Parameters:
-    ///   - imageToShare: The image to share.
-    ///   - deviceOrientation: The device's orientation (portrait or landscape).
+
     private func shareImage(_ imageToShare: UIImage, deviceOrientation: String) {
         let activityViewController = UIActivityViewController(activityItems: [imageToShare], applicationActivities: nil)
         
@@ -191,8 +181,6 @@ class InstagridViewController: UIViewController, GridViewDelegate {
         present(activityViewController, animated: true, completion: nil)
     }
     
-    /// Moves the view vertically based on the specified movement direction.
-    /// - Parameter movement: The direction in which to move the view.
     private func moveViewVertically(_ movement: ViewDirection) {
         switch movement {
         case .out:
@@ -207,9 +195,7 @@ class InstagridViewController: UIViewController, GridViewDelegate {
             }
         }
     }
-    
-    /// oves the view horizontally based on the specified movement direction.
-    /// - Parameter movement: Parameter movement: The direction in which to move the view.
+
     private func moveViewHorizontally(_ movement: ViewDirection) {
         switch movement {
         case .out:
@@ -222,9 +208,7 @@ class InstagridViewController: UIViewController, GridViewDelegate {
             }
         }
     }
-    
-    /// Captures an image of the gridView.
-    /// - Returns: The captured UIImage.
+
     func captureGridViewImage() -> UIImage? {
         UIGraphicsBeginImageContextWithOptions(gridView.bounds.size, gridView.isOpaque, 0)
         defer { UIGraphicsEndImageContext() }
@@ -232,7 +216,6 @@ class InstagridViewController: UIViewController, GridViewDelegate {
         return UIGraphicsGetImageFromCurrentImageContext()
     }
     
-    /// Enables features related to photo library access.
     func enablePhotoLibraryFeatures() {
         self.leadUpSquare.isUserInteractionEnabled = true
         self.trailUpSquare.isUserInteractionEnabled = true
@@ -241,12 +224,12 @@ class InstagridViewController: UIViewController, GridViewDelegate {
         
     }
     
-    /// Disables features related to photo library access and displays an alert.
     func disablePhotoLibraryFeatures() {
         let alertController = UIAlertController(
             title: "Accès à la bibliothèque de photos refusé",
             message: "Pour utiliser cette fonctionnalité, veuillez autoriser l'accès à la bibliothèque de photos dans les paramètres de l'application.",
             preferredStyle: .alert
+            //ajouter un lien vers les reglages
         )
         
         alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
@@ -259,8 +242,8 @@ class InstagridViewController: UIViewController, GridViewDelegate {
         self.trailDownSquare.isUserInteractionEnabled = false
     }
 
-    /// Sets up the grid layout based on the specified `LayoutType`.
-    /// - Parameter layoutType: The layout type to be set.
+
+    
     private func setupLayout(layoutType: LayoutType) {
         gridView.layoutType = layoutType
 
@@ -279,17 +262,7 @@ class InstagridViewController: UIViewController, GridViewDelegate {
             self.resizeImageForButton(leadDownSquare, width: 135, height: 135)
         }
     }
-    
-    /// Configures constraints for the layout based on the layout type.
-    /// - Parameters:
-    ///   - leadUp: Leading constraint for the upper square.
-    ///   - trailUp: Trailing constraint for the upper square.
-    ///   - leadDown: Leading constraint for the lower square
-    ///   - trailDown: Trailing constraint for the lower square.
-    ///   - trailUpHidden: Whether the upper square should be hidden.
-    ///   - trailDownHidden: Whether the lower square should be hidden.
-    ///   - trailUpTrail: Trailing constraint for the upper square (used when hidden).
-    ///   - trailDownTrail: Trailing constraint for the lower square (used when hidden).
+
     private func configureConstraints(leadUp: CGFloat, trailUp: CGFloat, leadDown: CGFloat, trailDown: CGFloat, trailUpHidden: Bool, trailDownHidden: Bool, trailUpTrail: CGFloat, trailDownTrail: CGFloat) {
         
         self.leadUpWidhtConstraint.constant = leadUp
@@ -303,25 +276,14 @@ class InstagridViewController: UIViewController, GridViewDelegate {
         self.trailUpTrailConstraint.constant = trailUpTrail
         self.trailDownTrailConstraint.constant = trailDownTrail
     }
-    
-    /// esizes an image for a button with specified width and height.
-    /// - Parameters:
-    ///   - button: The button whose image will be resized.
-    ///   - width: The target width for the image.
-    ///   - height: The target height for the image.
+
     private func resizeImageForButton(_ button: ImageButton, width: CGFloat, height: CGFloat) {
         if let image = button.selectedImage {
             let resizedImage = resizeImage(image: image, width: width, height: height)
             button.setImage(resizedImage, for: .normal)
         }
     }
-    
-    /// Resizes an image to the specified dimensions.
-    /// - Parameters:
-    ///   - image: The image to be resized.
-    ///   - width: The target width for the image.
-    ///   - height: The target height for the image.
-    /// - Returns: The resized image.
+
     private func resizeImage(image: UIImage?, width: CGFloat, height: CGFloat) -> UIImage? {
         guard let image = image else {
             return nil
@@ -337,33 +299,57 @@ class InstagridViewController: UIViewController, GridViewDelegate {
         return resizedImage
     }
 
-    /// Handler for the tap gesture on the layout 1 button.
-    /// - Parameter sender: The UITapGestureRecognizer triggering the action.
+    
     @IBAction func layout1ImageTapped(_ sender: UITapGestureRecognizer) {
         self.setupLayout(layoutType: .layout1)
+        
         self.layout1Button.image = selectedLayout
         self.layout2Button.image = layout2Image
         self.layout3Button.image = layout3Image
     }
-    
-    /// Handler for the tap gesture on the layout 2 button.
-    /// - Parameter sender: The UITapGestureRecognizer triggering the action.
+
     @IBAction func layout2ImageTapped(_ sender: UITapGestureRecognizer) {
         self.setupLayout(layoutType: .layout2)
+        
         self.layout1Button.image = layout1Image
         self.layout2Button.image = selectedLayout
         self.layout3Button.image = layout3Image
     }
-    
-    /// Handler for the tap gesture on the layout 3 button.
-    /// - Parameter sender: The UITapGestureRecognizer triggering the action.
+
     @IBAction func layout3ImageTapped(_ sender: UITapGestureRecognizer) {
         self.setupLayout(layoutType: .layout3)
+        
         self.layout1Button.image = layout1Image
         self.layout2Button.image = layout2Image
         self.layout3Button.image = selectedLayout
     }
 
+    
+    
+    // Méthode appelée lorsque vous voulez ouvrir la vue de sélection
+    func openSelectionView() {
+        let status = PHPhotoLibrary.authorizationStatus()
+        if status == .limited {
+            // L'accès à la bibliothèque de photos est limité, déclenchez le segue
+            performSegue(withIdentifier: "ShowSelectionViewSegue", sender: nil)
+        } else {
+            // L'accès à la bibliothèque de photos est autorisé ou refusé
+            // Faites ce que vous voulez en conséquence
+        }
+    }
+    
+    // Cette méthode est appelée avant de déclencher le segue
+      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+          if segue.identifier == "ShowSelectionViewSegue" {
+              // Assurez-vous que vous avez un segue avec cet identifiant
+              if let destinationVC = segue.destination as? SelectionViewController {
+                  // Vous pouvez passer des données à SelectionViewController si nécessaire
+                  // Par exemple, vous pourriez lui transmettre des paramètres pour personnaliser son comportement
+                  // destinationVC.someProperty = someValue
+              }
+          }
+      }
+    
 }
 
 

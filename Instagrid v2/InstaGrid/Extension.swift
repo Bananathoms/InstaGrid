@@ -9,6 +9,8 @@ import Foundation
 import UIKit
 
 extension UIView {
+    /// Finds and returns the view controller that contains this UIView.
+    /// - Returns: The parent view controller or nil if not found.
     func findViewController() -> UIViewController? {
         var responder: UIResponder? = self
         while let currentResponder = responder {
@@ -22,6 +24,9 @@ extension UIView {
 }
 
 extension UIImage {
+    /// Scales the image to the specified size.
+    /// - Parameter size: The target size for the scaled image.
+    /// - Returns: The scaled UIImage.
     func scale(to size: CGSize) -> UIImage {
         UIGraphicsBeginImageContextWithOptions(size, false, UIScreen.main.scale)
         defer { UIGraphicsEndImageContext() }
