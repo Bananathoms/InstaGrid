@@ -243,20 +243,32 @@ class InstagridViewController: UIViewController, GridViewDelegate {
     /// Disables features related to photo library access and displays an alert.
     func disablePhotoLibraryFeatures() {
         let alertController = UIAlertController(
-            title: "Accès à la bibliothèque de photos refusé",
-            message: "Pour utiliser cette fonctionnalité, veuillez autoriser l'accès à la bibliothèque de photos dans les paramètres de l'application.",
+            title: "Photo Library Access Denied",
+            message: "To use this feature, please allow access to the photo library in the app settings.",
             preferredStyle: .alert
         )
+
+        let settingsAction = UIAlertAction(title: "Settings", style: .default) { _ in
+            if let settingsUrl = URL(string: UIApplication.openSettingsURLString) {
+                if UIApplication.shared.canOpenURL(settingsUrl) {
+                    UIApplication.shared.open(settingsUrl)
+                }
+            }
+        }
         
-        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+
+        alertController.addAction(settingsAction)
+        alertController.addAction(cancelAction)
+
         present(alertController, animated: true, completion: nil)
-        
+
         self.leadUpSquare.isUserInteractionEnabled = false
         self.trailUpSquare.isUserInteractionEnabled = false
         self.leadDownSquare.isUserInteractionEnabled = false
         self.trailDownSquare.isUserInteractionEnabled = false
     }
+
 
     /// Sets up the grid layout based on the specified `LayoutType`.
     /// - Parameter layoutType: The layout type to be set.
