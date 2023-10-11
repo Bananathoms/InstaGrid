@@ -12,7 +12,6 @@ import UIKit
 class GridView: UIView {
     
     var delegate: GridViewDelegate?
-    
     var layoutType: LayoutType = .layout1 {
         didSet {
             setNeedsDisplay()
@@ -21,10 +20,8 @@ class GridView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupSwipeGesture()
+        self.setupSwipeGesture()
     }
-    
-    
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -37,7 +34,7 @@ class GridView: UIView {
     
     /// Sets up a swipe-up gesture recognizer on the grid view.
     private func setupSwipeGesture() {
-        let swipeUpGesture = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipeUp(_:)))
+        let swipeUpGesture = UISwipeGestureRecognizer(target: self, action: #selector(self.handleSwipeUp(_:)))
         swipeUpGesture.direction = .up
         self.addGestureRecognizer(swipeUpGesture)
     }
@@ -46,7 +43,7 @@ class GridView: UIView {
     /// - Parameter gesture: The swipe gesture recognizer.
     @objc private func handleSwipeUp(_ gesture: UISwipeGestureRecognizer) {
         if gesture.direction == .up {
-            delegate?.gridViewDidSwipeUp(self)
+            self.delegate?.gridViewDidSwipeUp(self)
         }
     }
 }

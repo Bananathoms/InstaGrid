@@ -39,8 +39,8 @@ class InstagridViewController: UIViewController, GridViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        gridView.delegate = self
-        setupLayout(layoutType: .layout1)
+        self.gridView.delegate = self
+        self.setupLayout(layoutType: .layout1)
         self.createSwipeGesture()
         
         
@@ -69,7 +69,7 @@ class InstagridViewController: UIViewController, GridViewDelegate {
          }
         
         /// Orientation observer
-        NotificationCenter.default.addObserver(self, selector: #selector(orientationChanged), name: UIDevice.orientationDidChangeNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.orientationChanged), name: UIDevice.orientationDidChangeNotification, object: nil)
 
     }
     
@@ -80,11 +80,11 @@ class InstagridViewController: UIViewController, GridViewDelegate {
         
         switch orientation {
         case .portrait, .portraitUpsideDown:
-            enableSwipeUpGesture()
-            disableSwipeLeftGesture()
+            self.enableSwipeUpGesture()
+            self.disableSwipeLeftGesture()
         case .landscapeLeft, .landscapeRight:
-            enableSwipeLeftGesture()
-            disableSwipeUpGesture()
+            self.enableSwipeLeftGesture()
+            self.disableSwipeUpGesture()
         default:
             break
         }
@@ -92,7 +92,7 @@ class InstagridViewController: UIViewController, GridViewDelegate {
     
     /// Enables swipe up gesture.
     func enableSwipeUpGesture() {
-        let swipeUpGesture = UISwipeGestureRecognizer(target: self, action: #selector(swipeGesture(with:)))
+        let swipeUpGesture = UISwipeGestureRecognizer(target: self, action: #selector(self.swipeGesture(with:)))
         swipeUpGesture.direction = .up
         self.view.addGestureRecognizer(swipeUpGesture)
         
@@ -110,7 +110,7 @@ class InstagridViewController: UIViewController, GridViewDelegate {
     
     /// nables swipe left gesture.
     func enableSwipeLeftGesture() {
-        let swipeLeftGesture = UISwipeGestureRecognizer(target: self, action: #selector(swipeGesture(with:)))
+        let swipeLeftGesture = UISwipeGestureRecognizer(target: self, action: #selector(self.swipeGesture(with:)))
         swipeLeftGesture.direction = .left
         self.view.addGestureRecognizer(swipeLeftGesture)
         
@@ -136,15 +136,15 @@ class InstagridViewController: UIViewController, GridViewDelegate {
         var swipeUp = [UISwipeGestureRecognizer]()
         var swipeLeft = [UISwipeGestureRecognizer]()
         
-        swipeUp.append(UISwipeGestureRecognizer(target: self, action: #selector(swipeGesture(with:))))
+        swipeUp.append(UISwipeGestureRecognizer(target: self, action: #selector(self.swipeGesture(with:))))
         swipeUp[0].direction = .up
-        swipeUp.append(UISwipeGestureRecognizer(target: self, action: #selector(swipeGesture(with:))))
+        swipeUp.append(UISwipeGestureRecognizer(target: self, action: #selector(self.swipeGesture(with:))))
         swipeUp[1].direction = .up
         self.view.addGestureRecognizer(swipeUp[0])
         
-        swipeLeft.append(UISwipeGestureRecognizer(target: self, action: #selector(swipeGesture(with:))))
+        swipeLeft.append(UISwipeGestureRecognizer(target: self, action: #selector(self.swipeGesture(with:))))
         swipeLeft[0].direction = .left
-        swipeLeft.append(UISwipeGestureRecognizer(target: self, action: #selector(swipeGesture(with:))))
+        swipeLeft.append(UISwipeGestureRecognizer(target: self, action: #selector(self.swipeGesture(with:))))
         swipeLeft[1].direction = .left
         self.view.addGestureRecognizer(swipeUp[0])
     }
@@ -154,14 +154,14 @@ class InstagridViewController: UIViewController, GridViewDelegate {
     @objc func swipeGesture(with gesture: UISwipeGestureRecognizer) {
         switch gesture.direction {
         case .up:
-            moveViewVertically(.out)
-            if let capturedImage = captureGridViewImage() {
-                shareImage(capturedImage, deviceOrientation: "portrait")
+            self.moveViewVertically(.out)
+            if let capturedImage = self.captureGridViewImage() {
+                self.shareImage(capturedImage, deviceOrientation: "portrait")
             }
         case .left:
-            moveViewHorizontally(.out)
-            if let capturedImage = captureGridViewImage() {
-                shareImage(capturedImage, deviceOrientation: "landscape")
+            self.moveViewHorizontally(.out)
+            if let capturedImage = self.captureGridViewImage() {
+                self.shareImage(capturedImage, deviceOrientation: "landscape")
             }
         default:
             break
@@ -187,7 +187,6 @@ class InstagridViewController: UIViewController, GridViewDelegate {
         default:
             break
         }
-        
         present(activityViewController, animated: true, completion: nil)
     }
     
@@ -228,7 +227,7 @@ class InstagridViewController: UIViewController, GridViewDelegate {
     func captureGridViewImage() -> UIImage? {
         UIGraphicsBeginImageContextWithOptions(gridView.bounds.size, gridView.isOpaque, 0)
         defer { UIGraphicsEndImageContext() }
-        gridView.drawHierarchy(in: gridView.bounds, afterScreenUpdates: true)
+        self.gridView.drawHierarchy(in: gridView.bounds, afterScreenUpdates: true)
         return UIGraphicsGetImageFromCurrentImageContext()
     }
     
@@ -262,7 +261,7 @@ class InstagridViewController: UIViewController, GridViewDelegate {
     /// Sets up the grid layout based on the specified `LayoutType`.
     /// - Parameter layoutType: The layout type to be set.
     private func setupLayout(layoutType: LayoutType) {
-        gridView.layoutType = layoutType
+        self.gridView.layoutType = layoutType
 
         switch layoutType {
         case .layout1:

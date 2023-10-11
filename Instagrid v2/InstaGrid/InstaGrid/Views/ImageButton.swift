@@ -13,29 +13,28 @@ import PhotosUI
 /// Custom UIButton subclass for selecting images.
 class ImageButton: UIButton, PHPickerViewControllerDelegate {
 
-    
     var imageSelectedHandler: ((UIImage?) -> Void)?
     var selectedImage: UIImage?
     var selectedButtonImage: UIImage? = UIImage(named: "Plus")
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        configureButton()
+        self.configureButton()
     }
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        configureButton()
+        self.configureButton()
     }
     
     /// Configures the appearance and behavior of the button.
     private func configureButton() {
         setTitle("", for: .normal)
-        setImage(selectedButtonImage, for: .normal)
+        setImage(self.selectedButtonImage, for: .normal)
         imageView?.contentMode = .scaleAspectFill
         backgroundColor = .white
 
-        addTarget(self, action: #selector(imageButtonTapped), for: .touchUpInside)
+        addTarget(self, action: #selector(self.imageButtonTapped), for: .touchUpInside)
     }
     
     /// Handles the tap event on the image button.
@@ -44,7 +43,7 @@ class ImageButton: UIButton, PHPickerViewControllerDelegate {
         configuration.filter = .images
         let picker = PHPickerViewController(configuration: configuration)
         picker.delegate = self
-        findViewController()?.present(picker, animated: true, completion: nil)
+        self.findViewController()?.present(picker, animated: true, completion: nil)
     }
 }
 
@@ -64,7 +63,6 @@ extension ImageButton: UIImagePickerControllerDelegate, UINavigationControllerDe
                 }
             }
         }
-
         picker.dismiss(animated: true, completion: nil)
     }
 
