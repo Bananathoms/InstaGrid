@@ -8,9 +8,11 @@
 import Foundation
 import UIKit
 import Photos
+import PhotosUI
 
 /// Custom UIButton subclass for selecting images.
-class ImageButton: UIButton {
+class ImageButton: UIButton, PHPickerViewControllerDelegate {
+
     
     var imageSelectedHandler: ((UIImage?) -> Void)?
     var selectedImage: UIImage?
@@ -38,35 +40,36 @@ class ImageButton: UIButton {
     
     /// Handles the tap event on the image button.
     @objc private func imageButtonTapped() {
-        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
-            let imagePicker = UIImagePickerController()
-            imagePicker.sourceType = .photoLibrary
-            imagePicker.delegate = self
-            findViewController()?.present(imagePicker, animated: true, completion: nil)
-        }
+        var configuration = PHPickerConfiguration()
+        configuration.filter = .images
+        let picker = PHPickerViewController(configuration: configuration)
+        picker.delegate = self
+        findViewController()?.present(picker, animated: true, completion: nil)
     }
 }
 
 extension ImageButton: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    /// Handles the image selection from the image picker.
-    /// - Parameters:
-    ///   - picker: The image picker controller.
-    ///   - info: The selected image info.
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        if let image = info[.originalImage] as? UIImage {
-            let buttonSize = self.frame.size
-            let scaledImage = image.scale(to: buttonSize)
+    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+        if let imageProvider = results.first?.itemProvider, imageProvider.canLoadObject(ofClass: UIImage.self) {
+            imageProvider.loadObject(ofClass: UIImage.self) { [weak self] (image, error) in
+                if let image = image as? UIImage {
+                    DispatchQueue.main.async {
+                        let buttonSize = self?.frame.size ?? CGSize.zero
+                        let scaledImage = image.scale(to: buttonSize)
 
-            selectedImage = scaledImage
-            setImage(selectedImage, for: .normal)
-            imageSelectedHandler?(selectedImage)
+                        self?.selectedImage = scaledImage
+                        self?.setImage(scaledImage, for: .normal)
+                        self?.imageSelectedHandler?(scaledImage)
+                    }
+                }
+            }
         }
+
         picker.dismiss(animated: true, completion: nil)
     }
-    
-    /// Handles the cancellation of image selection from the image picker.
-    /// - Parameter picker: The image picker controller.
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+
+    func pickerDidCancel(_ picker: PHPickerViewController) {
         picker.dismiss(animated: true, completion: nil)
     }
 }
+

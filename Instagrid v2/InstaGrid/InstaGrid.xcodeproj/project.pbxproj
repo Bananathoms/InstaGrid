@@ -22,7 +22,6 @@
 		DE67BC142ABFCF5800280306 /* Extensions+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE67BC132ABFCF5800280306 /* Extensions+UIView.swift */; };
 		DE67BC662AC3A4CC00280306 /* Delm-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = DE67BC642AC3A4CC00280306 /* Delm-Medium.otf */; };
 		DE67BC672AC3A4CC00280306 /* ThirstySoftRegular.otf in Resources */ = {isa = PBXBuildFile; fileRef = DE67BC652AC3A4CC00280306 /* ThirstySoftRegular.otf */; };
-		DE67BC6D2AC88D7500280306 /* AuthorizationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE67BC6C2AC88D7500280306 /* AuthorizationController.swift */; };
 		DE67BC6F2AC9C25E00280306 /* ViewDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE67BC6E2AC9C25E00280306 /* ViewDirection.swift */; };
 		DE67BC712AC9C31900280306 /* RenderViewToImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE67BC702AC9C31900280306 /* RenderViewToImage.swift */; };
 		DEE695732AD3595900315B2B /* Extensions+UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE695722AD3595900315B2B /* Extensions+UIImage.swift */; };
@@ -66,7 +65,6 @@
 		DE67BC132ABFCF5800280306 /* Extensions+UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions+UIView.swift"; sourceTree = "<group>"; };
 		DE67BC642AC3A4CC00280306 /* Delm-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Delm-Medium.otf"; path = "../../../../../../../../../Downloads/Delm-Medium.otf"; sourceTree = "<group>"; };
 		DE67BC652AC3A4CC00280306 /* ThirstySoftRegular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = ThirstySoftRegular.otf; path = ../../../../../../../../../Downloads/ThirstySoftRegular.otf; sourceTree = "<group>"; };
-		DE67BC6C2AC88D7500280306 /* AuthorizationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationController.swift; sourceTree = "<group>"; };
 		DE67BC6E2AC9C25E00280306 /* ViewDirection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDirection.swift; sourceTree = "<group>"; };
 		DE67BC702AC9C31900280306 /* RenderViewToImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderViewToImage.swift; sourceTree = "<group>"; };
 		DEE695722AD3595900315B2B /* Extensions+UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions+UIImage.swift"; sourceTree = "<group>"; };
@@ -174,7 +172,6 @@
 			isa = PBXGroup;
 			children = (
 				DE19E6CA2AB91A410049EE7A /* InstagridViewController.swift */,
-				DE67BC6C2AC88D7500280306 /* AuthorizationController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -358,7 +355,6 @@
 				DEE695762AD359A200315B2B /* LayoutType.swift in Sources */,
 				DE19E6FF2AB926340049EE7A /* Layout.swift in Sources */,
 				DE67BC712AC9C31900280306 /* RenderViewToImage.swift in Sources */,
-				DE67BC6D2AC88D7500280306 /* AuthorizationController.swift in Sources */,
 				DE67BC6F2AC9C25E00280306 /* ViewDirection.swift in Sources */,
 				DE19E6FB2AB925C50049EE7A /* GridView.swift in Sources */,
 				DE19E6C92AB91A410049EE7A /* SceneDelegate.swift in Sources */,
