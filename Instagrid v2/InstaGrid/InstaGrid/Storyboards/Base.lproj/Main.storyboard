@@ -156,7 +156,6 @@
                                         </connections>
                                     </imageView>
                                 </subviews>
-                                <variation key="heightClass=compact-widthClass=regular" axis="vertical"/>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -168,6 +167,7 @@
                                 <variation key="heightClass=regular-widthClass=compact" constant="332"/>
                             </constraint>
                             <constraint firstItem="8f2-m9-stG" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Yho-Ob-Jh3"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="NOb-8M-Ioc" secondAttribute="bottom" constant="20" id="hof-PM-4PL"/>
                             <constraint firstItem="bhS-pV-via" firstAttribute="centerX" secondItem="AOc-y7-o3h" secondAttribute="centerX" constant="-250" id="k8I-96-FXK">
                                 <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
                             </constraint>
@@ -191,6 +191,8 @@
                         <outlet property="leadDownWidthConstraint" destination="1Mf-7y-8X4" id="Jzj-qa-X7B"/>
                         <outlet property="leadUpSquare" destination="Rlx-Jm-QDX" id="YZ5-cQ-iCY"/>
                         <outlet property="leadUpWidhtConstraint" destination="Wln-2u-iV1" id="j6Q-rq-7ah"/>
+                        <outlet property="stackview" destination="NOb-8M-Ioc" id="CgQ-1K-uik"/>
+                        <outlet property="swipeStack" destination="bhS-pV-via" id="qxA-Ew-eka"/>
                         <outlet property="trailDownSquare" destination="KzJ-Ai-fZt" id="XPl-Yh-Uee"/>
                         <outlet property="trailDownTrailConstraint" destination="0hO-5L-7HZ" id="I3R-ei-qW5"/>
                         <outlet property="trailDownWidthConstraint" destination="c9f-Qb-w7Z" id="lq9-a3-bPv"/>

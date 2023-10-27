@@ -30,6 +30,7 @@ class InstagridViewController: UIViewController, GridViewDelegate {
     @IBOutlet weak var leadDownSquare: ImageButton!
     @IBOutlet weak var trailDownSquare: ImageButton!
     @IBOutlet weak var swipeStack: UIStackView!
+    @IBOutlet weak var stackview: UIStackView!
     @IBOutlet weak var leadUpWidhtConstraint: NSLayoutConstraint!
     @IBOutlet weak var trailUpWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var leadDownWidthConstraint: NSLayoutConstraint!
@@ -42,7 +43,6 @@ class InstagridViewController: UIViewController, GridViewDelegate {
         self.gridView.delegate = self
         self.setupLayout(layoutType: .layout1)
         self.createSwipeGesture()
-        
         
          /// Ask library acces
          let status = PHPhotoLibrary.authorizationStatus()
@@ -82,13 +82,16 @@ class InstagridViewController: UIViewController, GridViewDelegate {
         case .portrait, .portraitUpsideDown:
             self.enableSwipeUpGesture()
             self.disableSwipeLeftGesture()
+            self.stackview.axis = .horizontal
         case .landscapeLeft, .landscapeRight:
             self.enableSwipeLeftGesture()
             self.disableSwipeUpGesture()
+            self.stackview.axis = .vertical
         default:
             break
         }
     }
+    
     
     /// Enables swipe up gesture.
     func enableSwipeUpGesture() {
@@ -128,7 +131,7 @@ class InstagridViewController: UIViewController, GridViewDelegate {
 
     /// Delegate method called when the grid view is swiped up.
     func gridViewDidSwipeUp(_ gridView: GridView) {
-        
+        //expliquer pourquoi vide : methode obligatoire
     }
     
     /// Creates swipe gestures for handling user interaction.
@@ -225,9 +228,9 @@ class InstagridViewController: UIViewController, GridViewDelegate {
     /// Captures an image of the gridView.
     /// - Returns: The captured UIImage.
     func captureGridViewImage() -> UIImage? {
-        UIGraphicsBeginImageContextWithOptions(gridView.bounds.size, gridView.isOpaque, 0)
+        UIGraphicsBeginImageContextWithOptions(self.gridView.bounds.size, self.gridView.isOpaque, 0)
         defer { UIGraphicsEndImageContext() }
-        self.gridView.drawHierarchy(in: gridView.bounds, afterScreenUpdates: true)
+        self.gridView.drawHierarchy(in: self.gridView.bounds, afterScreenUpdates: true)
         return UIGraphicsGetImageFromCurrentImageContext()
     }
     
@@ -322,7 +325,7 @@ class InstagridViewController: UIViewController, GridViewDelegate {
     ///   - height: The target height for the image.
     private func resizeImageForButton(_ button: ImageButton, width: CGFloat, height: CGFloat) {
         if let image = button.selectedImage {
-            let resizedImage = resizeImage(image: image, width: width, height: height)
+            let resizedImage = self.resizeImage(image: image, width: width, height: height)
             button.setImage(resizedImage, for: .normal)
         }
     }
@@ -352,27 +355,27 @@ class InstagridViewController: UIViewController, GridViewDelegate {
     /// - Parameter sender: The UITapGestureRecognizer triggering the action.
     @IBAction func layout1ImageTapped(_ sender: UITapGestureRecognizer) {
         self.setupLayout(layoutType: .layout1)
-        self.layout1Button.image = selectedLayout
-        self.layout2Button.image = layout2Image
-        self.layout3Button.image = layout3Image
+        self.layout1Button.image = self.selectedLayout
+        self.layout2Button.image = self.layout2Image
+        self.layout3Button.image = self.layout3Image
     }
     
     /// Handler for the tap gesture on the layout 2 button.
     /// - Parameter sender: The UITapGestureRecognizer triggering the action.
     @IBAction func layout2ImageTapped(_ sender: UITapGestureRecognizer) {
         self.setupLayout(layoutType: .layout2)
-        self.layout1Button.image = layout1Image
-        self.layout2Button.image = selectedLayout
-        self.layout3Button.image = layout3Image
+        self.layout1Button.image = self.layout1Image
+        self.layout2Button.image = self.selectedLayout
+        self.layout3Button.image = self.layout3Image
     }
     
     /// Handler for the tap gesture on the layout 3 button.
     /// - Parameter sender: The UITapGestureRecognizer triggering the action.
     @IBAction func layout3ImageTapped(_ sender: UITapGestureRecognizer) {
         self.setupLayout(layoutType: .layout3)
-        self.layout1Button.image = layout1Image
-        self.layout2Button.image = layout2Image
-        self.layout3Button.image = selectedLayout
+        self.layout1Button.image = self.layout1Image
+        self.layout2Button.image = self.layout2Image
+        self.layout3Button.image = self.selectedLayout
     }
 
 }
