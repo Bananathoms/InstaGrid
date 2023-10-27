@@ -12,7 +12,9 @@ import PhotosUI
 
 /// Custom UIButton subclass for selecting images.
 class ImageButton: UIButton, PHPickerViewControllerDelegate {
-
+    
+    var delegate: ImageButtonDelegate?
+    
     var imageSelectedHandler: ((UIImage?) -> Void)?
     var selectedImage: UIImage?
     var selectedButtonImage: UIImage? = UIImage(named: "Plus")
@@ -39,12 +41,39 @@ class ImageButton: UIButton, PHPickerViewControllerDelegate {
     
     /// Handles the tap event on the image button.
     @objc private func imageButtonTapped() {
+        let photoLibraryStatus = PHPhotoLibrary.authorizationStatus()
+        
+        switch photoLibraryStatus {
+        case .authorized:
+            openImagePicker()
+        case .notDetermined:
+            PHPhotoLibrary.requestAuthorization { [weak self] status in
+                DispatchQueue.main.async {
+                    if status == .authorized {
+                        self?.openImagePicker()
+                    } else {
+                        self?.delegate?.imageButtonAccessDenied()
+                    }
+                }
+            }
+        default:
+
+            self.delegate?.imageButtonAccessDenied()
+            break
+        }
+    }
+
+    private func openImagePicker() {
         var configuration = PHPickerConfiguration()
         configuration.filter = .images
         let picker = PHPickerViewController(configuration: configuration)
         picker.delegate = self
         self.findViewController()?.present(picker, animated: true, completion: nil)
     }
+}
+
+protocol ImageButtonDelegate: AnyObject {
+    func imageButtonAccessDenied()
 }
 
 extension ImageButton: UIImagePickerControllerDelegate, UINavigationControllerDelegate {

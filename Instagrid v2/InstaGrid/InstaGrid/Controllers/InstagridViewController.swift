@@ -9,7 +9,7 @@ import UIKit
 import Photos
 
 /// Main view controller for the Instagrid app.
-class InstagridViewController: UIViewController, GridViewDelegate {
+class InstagridViewController: UIViewController, GridViewDelegate, ImageButtonDelegate {
     
     /// Images for layout selection buttons.
     let selectedLayout = UIImage(named: "Selected")
@@ -43,34 +43,13 @@ class InstagridViewController: UIViewController, GridViewDelegate {
         self.gridView.delegate = self
         self.setupLayout(layoutType: .layout1)
         self.createSwipeGesture()
-        
-         /// Ask library acces
-         let status = PHPhotoLibrary.authorizationStatus()
-         
-         switch status {
-         case .authorized:
-             /// acces authorized to all photos
-             self.isPhotoLibraryAccessAllowed = true
-         case .notDetermined:
-             /// acces not determined
-             PHPhotoLibrary.requestAuthorization { [self] status in
-                 DispatchQueue.main.async {
-                     if status == .authorized {
-                         self.enablePhotoLibraryFeatures()
-                         self.isPhotoLibraryAccessAllowed = true
-                     } else {
-                         self.disablePhotoLibraryFeatures()
-                     }
-                 }
-             }
-         default:
-             self.disablePhotoLibraryFeatures()
-             break
-         }
+        self.leadUpSquare.delegate = self
+        self.trailUpSquare.delegate = self
+        self.leadDownSquare.delegate = self
+        self.trailDownSquare.delegate = self
         
         /// Orientation observer
         NotificationCenter.default.addObserver(self, selector: #selector(self.orientationChanged), name: UIDevice.orientationDidChangeNotification, object: nil)
-
     }
     
     /// Called when the device orientation changes.
@@ -91,7 +70,6 @@ class InstagridViewController: UIViewController, GridViewDelegate {
             break
         }
     }
-    
     
     /// Enables swipe up gesture.
     func enableSwipeUpGesture() {
@@ -234,17 +212,7 @@ class InstagridViewController: UIViewController, GridViewDelegate {
         return UIGraphicsGetImageFromCurrentImageContext()
     }
     
-    /// Enables features related to photo library access.
-    func enablePhotoLibraryFeatures() {
-        self.leadUpSquare.isUserInteractionEnabled = true
-        self.trailUpSquare.isUserInteractionEnabled = true
-        self.leadDownSquare.isUserInteractionEnabled = true
-        self.trailDownSquare.isUserInteractionEnabled = true
-        
-    }
-    
-    /// Disables features related to photo library access and displays an alert.
-    func disablePhotoLibraryFeatures() {
+    func imageButtonAccessDenied() {
         let alertController = UIAlertController(
             title: "Photo Library Access Denied",
             message: "To use this feature, please allow access to the photo library in the app settings.",
@@ -258,20 +226,22 @@ class InstagridViewController: UIViewController, GridViewDelegate {
                 }
             }
         }
-        
+
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
 
         alertController.addAction(settingsAction)
         alertController.addAction(cancelAction)
 
         present(alertController, animated: true, completion: nil)
-
-        self.leadUpSquare.isUserInteractionEnabled = false
-        self.trailUpSquare.isUserInteractionEnabled = false
-        self.leadDownSquare.isUserInteractionEnabled = false
-        self.trailDownSquare.isUserInteractionEnabled = false
     }
-
+    /// Enables features related to photo library access.
+    func enablePhotoLibraryFeatures() {
+        self.leadUpSquare.isUserInteractionEnabled = true
+        self.trailUpSquare.isUserInteractionEnabled = true
+        self.leadDownSquare.isUserInteractionEnabled = true
+        self.trailDownSquare.isUserInteractionEnabled = true
+        
+    }
 
     /// Sets up the grid layout based on the specified `LayoutType`.
     /// - Parameter layoutType: The layout type to be set.
@@ -379,5 +349,3 @@ class InstagridViewController: UIViewController, GridViewDelegate {
     }
 
 }
-
-
