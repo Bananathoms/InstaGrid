@@ -59,57 +59,30 @@ class InstagridViewController: UIViewController, GridViewDelegate, ImageButtonDe
         
         switch orientation {
         case .portrait, .portraitUpsideDown:
-            self.enableSwipeUpGesture()
-            self.disableSwipeLeftGesture()
+            self.enableSwipeGesture(enable: .up, disable: .left)
             self.stackview.axis = .horizontal
         case .landscapeLeft, .landscapeRight:
-            self.enableSwipeLeftGesture()
-            self.disableSwipeUpGesture()
+            self.enableSwipeGesture(enable: .left, disable: .up)
             self.stackview.axis = .vertical
         default:
             break
         }
     }
     
-    /// Enables swipe up gesture.
-    func enableSwipeUpGesture() {
-        let swipeUpGesture = UISwipeGestureRecognizer(target: self, action: #selector(self.swipeGesture(with:)))
-        swipeUpGesture.direction = .up
-        self.view.addGestureRecognizer(swipeUpGesture)
+    /// Enables swipe gesture.
+    func enableSwipeGesture(enable: UISwipeGestureRecognizer.Direction, disable: UISwipeGestureRecognizer.Direction) {
+        let enableGesture = UISwipeGestureRecognizer(target: self, action: #selector(self.swipeGesture(with:)))
+        enableGesture.direction = enable
+        self.view.addGestureRecognizer(enableGesture)
         
-        if let swipeLeftGesture = self.view.gestureRecognizers?.first(where: { ($0 as? UISwipeGestureRecognizer)?.direction == .left }) {
-            self.view.removeGestureRecognizer(swipeLeftGesture)
+        if let disableGesture = self.view.gestureRecognizers?.first(where: { ($0 as? UISwipeGestureRecognizer)?.direction == disable }) {
+            self.view.removeGestureRecognizer(disableGesture)
         }
     }
     
-    /// Disables swipe up gesture.
-    func disableSwipeUpGesture() {
-        if let swipeUpGesture = self.view.gestureRecognizers?.first(where: { ($0 as? UISwipeGestureRecognizer)?.direction == .up }) {
-            self.view.removeGestureRecognizer(swipeUpGesture)
-        }
-    }
-    
-    /// nables swipe left gesture.
-    func enableSwipeLeftGesture() {
-        let swipeLeftGesture = UISwipeGestureRecognizer(target: self, action: #selector(self.swipeGesture(with:)))
-        swipeLeftGesture.direction = .left
-        self.view.addGestureRecognizer(swipeLeftGesture)
-        
-        if let swipeUpGesture = self.view.gestureRecognizers?.first(where: { ($0 as? UISwipeGestureRecognizer)?.direction == .up }) {
-            self.view.removeGestureRecognizer(swipeUpGesture)
-        }
-    }
-    
-    /// Disables swipe left gesture.
-    func disableSwipeLeftGesture() {
-        if let swipeLeftGesture = self.view.gestureRecognizers?.first(where: { ($0 as? UISwipeGestureRecognizer)?.direction == .left }) {
-            self.view.removeGestureRecognizer(swipeLeftGesture)
-        }
-    }
-
     /// Delegate method called when the grid view is swiped up.
     func gridViewDidSwipeUp(_ gridView: GridView) {
-        //expliquer pourquoi vide : methode obligatoire
+        //Methode obligatoire
     }
     
     /// Creates swipe gestures for handling user interaction.
