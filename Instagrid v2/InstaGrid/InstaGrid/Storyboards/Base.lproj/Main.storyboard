@@ -163,6 +163,9 @@
                         <constraints>
                             <constraint firstItem="AOc-y7-o3h" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="AvZ-1b-Ie1"/>
                             <constraint firstItem="8f2-m9-stG" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="5" id="Kd7-bq-5hv"/>
+                            <constraint firstItem="NOb-8M-Ioc" firstAttribute="centerY" secondItem="AOc-y7-o3h" secondAttribute="centerY" id="PtI-8c-OhZ">
+                                <variation key="heightClass=regular-widthClass=compact" constant="332"/>
+                            </constraint>
                             <constraint firstItem="8f2-m9-stG" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Yho-Ob-Jh3"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="NOb-8M-Ioc" secondAttribute="bottom" constant="20" id="hof-PM-4PL"/>
                             <constraint firstItem="bhS-pV-via" firstAttribute="centerX" secondItem="AOc-y7-o3h" secondAttribute="centerX" constant="-250" id="k8I-96-FXK">
