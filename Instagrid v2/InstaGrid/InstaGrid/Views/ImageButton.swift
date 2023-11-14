@@ -13,7 +13,7 @@ import PhotosUI
 /// Custom UIButton subclass for selecting images.
 class ImageButton: UIButton, PHPickerViewControllerDelegate {
     
-    var delegate: ImageButtonDelegate?
+    weak var delegate: ImageButtonDelegate?
     
     var imageSelectedHandler: ((UIImage?) -> Void)?
     var selectedImage: UIImage?

@@ -11,7 +11,7 @@ import UIKit
 /// Custom view representing the grid layout for photos.
 class GridView: UIView {
     
-    var delegate: GridViewDelegate?
+    weak var delegate: GridViewDelegate?
     var layoutType: LayoutType = .layout1 {
         didSet {
             setNeedsDisplay()

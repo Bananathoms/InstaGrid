@@ -9,7 +9,7 @@ import UIKit
 import Photos
 
 /// Main view controller for the Instagrid app.
-class InstagridViewController: UIViewController, GridViewDelegate, ImageButtonDelegate {
+class InstagridViewController: UIViewController, ImageButtonDelegate {
     
     /// Images for layout selection buttons.
     let selectedLayout = UIImage(named: "Selected")
@@ -40,7 +40,6 @@ class InstagridViewController: UIViewController, GridViewDelegate, ImageButtonDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.gridView.delegate = self
         self.setupLayout(layoutType: .layout1)
         self.createSwipeGesture()
         self.leadUpSquare.delegate = self
@@ -79,12 +78,7 @@ class InstagridViewController: UIViewController, GridViewDelegate, ImageButtonDe
             self.view.removeGestureRecognizer(disableGesture)
         }
     }
-    
-    /// Delegate method called when the grid view is swiped up.
-    func gridViewDidSwipeUp(_ gridView: GridView) {
-        //Methode obligatoire
-    }
-    
+
     /// Creates swipe gestures for handling user interaction.
     private func createSwipeGesture() {
         var swipeUp = [UISwipeGestureRecognizer]()
