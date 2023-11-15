@@ -20,9 +20,9 @@
 		DE19E6FF2AB926340049EE7A /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE19E6FE2AB926340049EE7A /* Layout.swift */; };
 		DE67BC102ABE7F9A00280306 /* ImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE67BC0F2ABE7F9A00280306 /* ImageButton.swift */; };
 		DE67BC142ABFCF5800280306 /* Extensions+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE67BC132ABFCF5800280306 /* Extensions+UIView.swift */; };
-		DE67BC662AC3A4CC00280306 /* Delm-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = DE67BC642AC3A4CC00280306 /* Delm-Medium.otf */; };
-		DE67BC672AC3A4CC00280306 /* ThirstySoftRegular.otf in Resources */ = {isa = PBXBuildFile; fileRef = DE67BC652AC3A4CC00280306 /* ThirstySoftRegular.otf */; };
 		DE67BC6F2AC9C25E00280306 /* ViewDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE67BC6E2AC9C25E00280306 /* ViewDirection.swift */; };
+		DE96080B2B0442B5004DFCD0 /* Delm-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = DE96080A2B0442B5004DFCD0 /* Delm-Medium.otf */; };
+		DE96080D2B0442D3004DFCD0 /* ThirstySoftRegular.otf in Resources */ = {isa = PBXBuildFile; fileRef = DE96080C2B0442D3004DFCD0 /* ThirstySoftRegular.otf */; };
 		DEE695732AD3595900315B2B /* Extensions+UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE695722AD3595900315B2B /* Extensions+UIImage.swift */; };
 		DEE695762AD359A200315B2B /* LayoutType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE695752AD359A200315B2B /* LayoutType.swift */; };
 /* End PBXBuildFile section */
@@ -62,9 +62,9 @@
 		DE19E6FE2AB926340049EE7A /* Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
 		DE67BC0F2ABE7F9A00280306 /* ImageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageButton.swift; sourceTree = "<group>"; };
 		DE67BC132ABFCF5800280306 /* Extensions+UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions+UIView.swift"; sourceTree = "<group>"; };
-		DE67BC642AC3A4CC00280306 /* Delm-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Delm-Medium.otf"; path = "../../../../../../../../../Downloads/Delm-Medium.otf"; sourceTree = "<group>"; };
-		DE67BC652AC3A4CC00280306 /* ThirstySoftRegular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = ThirstySoftRegular.otf; path = ../../../../../../../../../Downloads/ThirstySoftRegular.otf; sourceTree = "<group>"; };
 		DE67BC6E2AC9C25E00280306 /* ViewDirection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDirection.swift; sourceTree = "<group>"; };
+		DE96080A2B0442B5004DFCD0 /* Delm-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Delm-Medium.otf"; sourceTree = "<group>"; };
+		DE96080C2B0442D3004DFCD0 /* ThirstySoftRegular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ThirstySoftRegular.otf; sourceTree = "<group>"; };
 		DEE695722AD3595900315B2B /* Extensions+UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions+UIImage.swift"; sourceTree = "<group>"; };
 		DEE695752AD359A200315B2B /* LayoutType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -186,8 +186,8 @@
 			isa = PBXGroup;
 			children = (
 				DE19E6CF2AB91A430049EE7A /* Assets.xcassets */,
-				DE67BC642AC3A4CC00280306 /* Delm-Medium.otf */,
-				DE67BC652AC3A4CC00280306 /* ThirstySoftRegular.otf */,
+				DE96080A2B0442B5004DFCD0 /* Delm-Medium.otf */,
+				DE96080C2B0442D3004DFCD0 /* ThirstySoftRegular.otf */,
 			);
 			path = Ressources;
 			sourceTree = "<group>";
@@ -315,9 +315,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DE67BC672AC3A4CC00280306 /* ThirstySoftRegular.otf in Resources */,
 				DE19E6D32AB91A430049EE7A /* LaunchScreen.storyboard in Resources */,
-				DE67BC662AC3A4CC00280306 /* Delm-Medium.otf in Resources */,
+				DE96080B2B0442B5004DFCD0 /* Delm-Medium.otf in Resources */,
+				DE96080D2B0442D3004DFCD0 /* ThirstySoftRegular.otf in Resources */,
 				DE19E6D02AB91A430049EE7A /* Assets.xcassets in Resources */,
 				DE19E6CE2AB91A410049EE7A /* Main.storyboard in Resources */,
 			);
